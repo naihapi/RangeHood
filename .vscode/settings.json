@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cstdint": "c",
+        "string": "c",
+        "array": "c",
+        "string_view": "c",
+        "usart.h": "c",
+        "main.h": "c"
+    }
+}
