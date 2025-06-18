@@ -19,8 +19,8 @@
 #include "FreeRTOSConfig.h"
 #include "task.h"
 
-// 外置硬件
-//...
+// 硬件
+#include "WS2812.h"
 
 // 软件
 #include "MyTask.h"

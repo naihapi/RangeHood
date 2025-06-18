@@ -41,8 +41,9 @@
 .\objects\mytask.o: .\FreeRTOS\FreeRTOS_CORE\include\mpu_wrappers.h
 .\objects\mytask.o: .\FreeRTOS\FreeRTOS_CORE\include\task.h
 .\objects\mytask.o: .\FreeRTOS\FreeRTOS_CORE\include\list.h
-.\objects\mytask.o: Software\MyTask\MyTask.h
-.\objects\mytask.o: .\Software\Delay\Delay.h
+.\objects\mytask.o: .\Hardware\WS2812\WS2812.h
 .\objects\mytask.o: .\Peripheral\GPIO\GPIO.h
 .\objects\mytask.o: .\Software\Delay\Delay.h
+.\objects\mytask.o: .\Peripheral\GPIO\GPIO.h
+.\objects\mytask.o: Software\MyTask\MyTask.h
 .\objects\mytask.o: .\Peripheral\TIM\TIM.h

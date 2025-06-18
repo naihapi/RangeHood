@@ -26,7 +26,7 @@
 #define configUSE_IDLE_HOOK 0                         // 不使用空闲任务钩子函数
 #define configUSE_TICK_HOOK 0                         // 不使用滴答定时器钩子函数
 #define configCPU_CLOCK_HZ ((unsigned long)72000000)  // CPU时钟频率设置为72MHz
-#define configTICK_RATE_HZ ((TickType_t)1000)         // 滴答定时器频率设置为1000Hz（即1ms一次）
+#define configTICK_RATE_HZ ((TickType_t)1000)         // 滴答定时器频率设置为1000Hz（即1ms进行切换调度，但是是否成功还取决于其它条件）
 #define configMAX_PRIORITIES (5)                      // 设置任务的最大优先级数量
 #define configMAX_TASK_NAME_LEN (16)                  // 设置任务名的最大长度
 #define configUSE_TRACE_FACILITY 0                    // 不使用跟踪功能

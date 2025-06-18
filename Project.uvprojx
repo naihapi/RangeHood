@@ -340,7 +340,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include</IncludePath>
+              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Hardware\WS2812;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -693,6 +693,18 @@
         </Group>
         <Group>
           <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>WS2812.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\WS2812\WS2812.c</FilePath>
+            </File>
+            <File>
+              <FileName>WS2812.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\WS2812\WS2812.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Software</GroupName>

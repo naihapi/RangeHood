@@ -28,6 +28,7 @@
 ".\objects\sys.o"
 ".\objects\gpio.o"
 ".\objects\tim.o"
+".\objects\ws2812.o"
 ".\objects\delay.o"
 ".\objects\mytask.o"
 ".\objects\main.o"

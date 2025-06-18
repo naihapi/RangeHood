@@ -24,12 +24,17 @@ TaskHandle_t TASK_START_Handler;
  */
 void TASK1(void *pvParameters)
 {
+
     while (1)
     {
-        GPIO_TestLED_ON();
-        Delay_ms(500);
-        GPIO_TestLED_OFF();
-        Delay_ms(500);
+        taskENTER_CRITICAL();
+
+        // GPIO_TestLED_ON();
+        // Delay_ms(500);
+        // GPIO_TestLED_OFF();
+        // Delay_ms(500);
+
+        taskEXIT_CRITICAL();
     }
 }
 

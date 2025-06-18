@@ -68,10 +68,10 @@ void GPIO_WS2812_PinConfig(uint8_t Signal)
 {
     switch (Signal)
     {
-    case HIGH:
+    case 1:
         GPIO_SetBits(GPIOA, GPIO_Pin_12);
         break;
-    case LOW:
+    case 0:
         GPIO_ResetBits(GPIOA, GPIO_Pin_12);
         break;
     }
@@ -89,11 +89,30 @@ void GPIO_WS2812_PinConfig(uint8_t Signal)
 void GPIO_WS2812_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-
     GPIO_InitTypeDef GPIO_INITSTRUCTURE;
 
     GPIO_INITSTRUCTURE.GPIO_Pin = GPIO_Pin_12;
     GPIO_INITSTRUCTURE.GPIO_Mode = GPIO_Mode_Out_OD;
+    GPIO_INITSTRUCTURE.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA, &GPIO_INITSTRUCTURE);
+}
+
+/**
+ * @brief 风扇引脚初始化
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 无
+ */
+void GPIO_FAN_Init(void)
+{
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    GPIO_InitTypeDef GPIO_INITSTRUCTURE;
+
+    GPIO_INITSTRUCTURE.GPIO_Pin = GPIO_Pin_9;
+    GPIO_INITSTRUCTURE.GPIO_Mode = GPIO_Mode_AF_OD;
     GPIO_INITSTRUCTURE.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_INITSTRUCTURE);
 }
@@ -109,6 +128,7 @@ void GPIO_WS2812_Init(void)
  */
 void GPIO_InitPro(void)
 {
-    GPIO_TestLED_Init();
+    // GPIO_TestLED_Init();
     GPIO_WS2812_Init();
+    GPIO_FAN_Init();
 }
