@@ -1,9 +1,6 @@
 #ifndef _MyTASK_H
 #define _MyTASK_H
 
-// 模板取样处
-// ⬇️
-
 // 宏定义
 //...
 
@@ -20,11 +17,14 @@
 #include "task.h"
 
 // 硬件
+#include "OLED.h"
 #include "WS2812.h"
+#include "KEY.h"
 
 // 软件
 #include "MyTask.h"
 #include "Delay.h"
+#include "Build.h"
 
 // 外设
 #include "TIM.h"

@@ -338,9 +338,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--no-multibyte-chars</MiscControls>
-              <Define>USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER STM32F10X_LD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Hardware\WS2812;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include</IncludePath>
+              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Hardware\WS2812;.\Hardware\OLED;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include;.\Software\Build;.\Software\Menu;.\Software\UI;.\Hardware\KEY</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -704,6 +704,36 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\WS2812\WS2812.h</FilePath>
             </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\OLED\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\OLED\OLED_Data.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED\OLED_Data.h</FilePath>
+            </File>
+            <File>
+              <FileName>KEY.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\KEY\KEY.c</FilePath>
+            </File>
+            <File>
+              <FileName>KEY.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\KEY\KEY.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -728,6 +758,36 @@
               <FileName>MyTask.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Software\MyTask\MyTask.h</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Software\Menu\Menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Software\Menu\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>Build.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Software\Build\Build.c</FilePath>
+            </File>
+            <File>
+              <FileName>Build.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Software\Build\Build.h</FilePath>
+            </File>
+            <File>
+              <FileName>UI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Software\UI\UI.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Software\UI\UI.h</FilePath>
             </File>
           </Files>
         </Group>

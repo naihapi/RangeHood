@@ -27,14 +27,7 @@ void TASK1(void *pvParameters)
 
     while (1)
     {
-        taskENTER_CRITICAL();
-
-        // GPIO_TestLED_ON();
-        // Delay_ms(500);
-        // GPIO_TestLED_OFF();
-        // Delay_ms(500);
-
-        taskEXIT_CRITICAL();
+        KEY1_Scanf();
     }
 }
 
@@ -47,6 +40,7 @@ void TASK2(void *pvParameters)
 {
     while (1)
     {
+        KEY2_Scanf();
     }
 }
 
@@ -59,6 +53,7 @@ void TASK3(void *pvParameters)
 {
     while (1)
     {
+        KEY3_Scanf();
     }
 }
 
@@ -69,8 +64,15 @@ void TASK3(void *pvParameters)
  */
 void TASK4(void *pvParameters)
 {
+    OLED_Init();
+
+    OLED_ShowString(0, 0, "naihapi", OLED_6X8);
+    OLED_Update();
+
     while (1)
     {
+        Build_ControlPro();
+        OLED_Update();
     }
 }
 
