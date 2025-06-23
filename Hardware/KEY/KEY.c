@@ -104,8 +104,8 @@ uint8_t KEY_RetState(uint8_t Keyx)
         return KEY3_State;
     }
     }
-	
-	return 255;
+
+    return 255;
 }
 
 /**
@@ -190,7 +190,7 @@ void KEY2_Scanf(void)
             }
             else
             {
-                KEY_SetState(KEY_NUMBER_2, KEY_STATE_DOWNSHORT); // 长按
+                KEY_SetState(KEY_NUMBER_2, KEY_STATE_DOWNSHORT); // 短按
             }
         }
     }
@@ -228,7 +228,7 @@ void KEY3_Scanf(void)
                 }
             }
 
-            if (KEY_CNT_longDown >= 200)
+            if (KEY_CNT_longDown >= 50)
             {
                 KEY_SetState(KEY_NUMBER_3, KEY_STATE_DOWNLONG); // 长按
             }

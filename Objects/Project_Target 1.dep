@@ -927,7 +927,7 @@ F (.\Hardware\OLED\OLED_Data.c)(0x67E8FDE2)(--c99 -c --cpu Cortex-M3 -g -O0 --ap
 I (Hardware\OLED\OLED_Data.h)(0x67D3EC28)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 F (.\Hardware\OLED\OLED_Data.h)(0x67D3EC28)()
-F (.\Hardware\KEY\KEY.c)(0x68552337)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
+F (.\Hardware\KEY\KEY.c)(0x68590129)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
 I (Hardware\KEY\KEY.h)(0x6855199C)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
@@ -982,7 +982,7 @@ I (.\Hardware\KEY\KEY.h)(0x6855199C)
 I (.\Software\Build\Build.h)(0x68552526)
 I (.\Software\Menu\Menu.h)(0x68551A17)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
-I (.\Software\UI\UI.h)(0x685524BB)
+I (.\Software\UI\UI.h)(0x6858FF2F)
 I (.\Peripheral\TIM\TIM.h)(0x67D1895A)
 F (.\Hardware\KEY\KEY.h)(0x6855199C)()
 F (.\Software\Delay\Delay.c)(0x6851373E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
@@ -1073,10 +1073,10 @@ I (.\Software\MyTask\MyTASK.h)(0x68552552)
 I (.\Software\Build\Build.h)(0x68552526)
 I (.\Software\Menu\Menu.h)(0x68551A17)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
-I (.\Software\UI\UI.h)(0x685524BB)
+I (.\Software\UI\UI.h)(0x6858FF2F)
 I (.\Peripheral\TIM\TIM.h)(0x67D1895A)
 F (.\Software\MyTask\MyTask.h)(0x68552552)()
-F (.\Software\Menu\Menu.c)(0x68552252)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\menu.o --omf_browse .\objects\menu.crf --depend .\objects\menu.d)
+F (.\Software\Menu\Menu.c)(0x68590262)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\menu.o --omf_browse .\objects\menu.crf --depend .\objects\menu.d)
 I (Software\Menu\Menu.h)(0x68551A17)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
@@ -1124,7 +1124,7 @@ I (.\FreeRTOS\FreeRTOS_CORE\include\mpu_wrappers.h)(0x64020E50)
 I (.\FreeRTOS\FreeRTOS_CORE\include\task.h)(0x64020E50)
 I (.\FreeRTOS\FreeRTOS_CORE\include\list.h)(0x64020E50)
 F (.\Software\Menu\Menu.h)(0x68551A17)()
-F (.\Software\Build\Build.c)(0x68552C56)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\build.o --omf_browse .\objects\build.crf --depend .\objects\build.d)
+F (.\Software\Build\Build.c)(0x68590076)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\build.o --omf_browse .\objects\build.crf --depend .\objects\build.d)
 I (Software\Build\Build.h)(0x68552526)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
@@ -1172,7 +1172,7 @@ I (.\FreeRTOS\FreeRTOS_PORT\portmacro.h)(0x64020E50)
 I (.\FreeRTOS\FreeRTOS_CORE\include\mpu_wrappers.h)(0x64020E50)
 I (.\FreeRTOS\FreeRTOS_CORE\include\task.h)(0x64020E50)
 I (.\FreeRTOS\FreeRTOS_CORE\include\list.h)(0x64020E50)
-I (.\Software\UI\UI.h)(0x685524BB)
+I (.\Software\UI\UI.h)(0x6858FF2F)
 I (.\Software\MyTask\MyTASK.h)(0x68552552)
 I (D:\Keil5\ARM\ARMCC\include\stdbool.h)(0x5E8E3CC2)
 I (.\Hardware\WS2812\WS2812.h)(0x68513D5F)
@@ -1183,7 +1183,7 @@ I (.\Software\Build\Build.h)(0x68552526)
 I (.\Peripheral\TIM\TIM.h)(0x67D1895A)
 F (.\Software\Build\Build.h)(0x68552526)()
 F (.\Software\UI\UI.c)(0x67D4524D)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\ui.o --omf_browse .\objects\ui.crf --depend .\objects\ui.d)
-I (Software\UI\UI.h)(0x685524BB)
+I (Software\UI\UI.h)(0x6858FF2F)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1237,9 +1237,9 @@ I (.\Hardware\KEY\KEY.h)(0x6855199C)
 I (.\Software\Build\Build.h)(0x68552526)
 I (.\Software\Menu\Menu.h)(0x68551A17)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
-I (.\Software\UI\UI.h)(0x685524BB)
+I (.\Software\UI\UI.h)(0x6858FF2F)
 I (.\Peripheral\TIM\TIM.h)(0x67D1895A)
-F (.\Software\UI\UI.h)(0x685524BB)()
+F (.\Software\UI\UI.h)(0x6858FF2F)()
 F (.\User\main.c)(0x68552A5E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (User\main.h)(0x68552884)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
@@ -1295,7 +1295,7 @@ I (.\Hardware\KEY\KEY.h)(0x6855199C)
 I (.\Software\Build\Build.h)(0x68552526)
 I (.\Software\Menu\Menu.h)(0x68551A17)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
-I (.\Software\UI\UI.h)(0x685524BB)
+I (.\Software\UI\UI.h)(0x6858FF2F)
 I (.\Peripheral\TIM\TIM.h)(0x67D1895A)
 F (.\User\stm32f10x_conf.h)(0x4D99A59E)()
 F (.\User\stm32f10x_it.c)(0x673AC3F7)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\System -I .\User -I .\Hardware -I .\Hardware\WS2812 -I .\Hardware\OLED -I .\Peripheral -I .\Peripheral\GPIO -I .\Peripheral\TIM -I .\Software -I .\Software\MyTask -I .\Software\Delay -I .\FreeRTOS\FreeRTOS_CORE -I .\FreeRTOS\FreeRTOS_PORT -I .\FreeRTOS\FreeRTOS_CORE\include -I .\Software\Build -I .\Software\Menu -I .\Software\UI -I .\Hardware\KEY --no-multibyte-chars-ID:\Keil5_Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_LD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_LD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)

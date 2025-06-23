@@ -22,7 +22,7 @@ void UI_Display_SwitchModule(uint8_t *Title, uint8_t *State);
 void UI_Display_ViewModule(uint8_t *Title, uint8_t *Description, int *Value);
 void UI_Display_SliderModule(uint8_t *Title, int *NowValue, int *MaxValue, int *MiniValue, uint8_t *Unit, uint8_t Selected);
 void UI_Display_Home(uint8_t selected, MenuHome *head);
-// void UI_Display_Menu(uint8_t selected, MenuItem *head, uint8_t maxitem);
+void UI_Display_Menu(uint8_t selected, MenuItem *head, uint8_t maxitem);
 void UI_Display_Requesting(void);
 void UI_Display_RequestSuccess(void);
 void UI_Display_RequestFail(void);

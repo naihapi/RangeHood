@@ -584,14 +584,12 @@ void Menu_CreateHome(void)
 
     // 创建项
     MenuHome *system = Menu_CreateHomeItem(OLEDData_Icon_Home_System, Menu_Title_System, Menu_Head_System, &Menu_MaxItem_System);
-    MenuHome *normal = Menu_CreateHomeItem(OLEDData_Icon_Home_Normal, Menu_Title_Normal, Menu_Head_Normal, &Menu_MaxItem_Normal);
     MenuHome *light = Menu_CreateHomeItem(OLEDData_Icon_Home_Light, Menu_Title_Light, Menu_Head_Light, &Menu_MaxItem_Light);
     MenuHome *sensor = Menu_CreateHomeItem(OLEDData_Icon_Home_Sensor, Menu_Title_Sensor, Menu_Head_Sensor, &Menu_MaxItem_Sensor);
     MenuHome *cruise = Menu_CreateHomeItem(OLEDData_Icon_Home_Cruise, Menu_Title_Cruise, Menu_Head_Cruise, &Menu_MaxItem_Cruise);
 
     // 菜单头包含
     Menu_Include_HomeItem(Menu_Head_Home, system);
-    Menu_Include_HomeItem(Menu_Head_Home, normal);
     Menu_Include_HomeItem(Menu_Head_Home, light);
     Menu_Include_HomeItem(Menu_Head_Home, sensor);
     Menu_Include_HomeItem(Menu_Head_Home, cruise);
@@ -656,7 +654,7 @@ void Menu_CreateCruise(void)
     Menu_Head_Cruise = Menu_CreateMenuHead(Menu_Title_Cruise);
 
     // 创建项
-    MenuItem *speed = Menu_CreateSliderItem(OLEDData_Icon_Speed, Name_CruiseSpeed, &Value_Cruise_NowSpeed, &Value_Cruise_MaxSpeed, &Value_Cruise_MiniSpeed, Unit_Cruise_Speed, SliderModule_NotSetting, DataHandle_UpdateANDRequest); // 创建“速度”项
+    MenuItem *speed = Menu_CreateSliderItem(OLEDData_Icon_Speed, Name_CruiseSpeed, &Value_Cruise_NowSpeed, &Value_Cruise_MaxSpeed, &Value_Cruise_MiniSpeed, Unit_Cruise_Speed, SliderModule_YesSetting, DataHandle_UpdateANDRequest); // 创建“速度”项
     MenuItem *ultra = Menu_CreateSwitchItem(OLEDData_Icon_UltraSound, Name_UltraSound, &State_UltraSound, DataHandle_UpdateANDRequest);                                                                                               // 创建“超声波”项
     MenuItem *cruise = Menu_CreateSwitchItem(OLEDData_Icon_Cruise, Name_CruiseState, &State_CruiseState, DataHandle_UpdateANDRequest);
 
