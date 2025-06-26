@@ -65,7 +65,7 @@ void TIM_FAN_Init(void)
     TIM_OCInitStructure.TIM_Pulse = 0; // 初始占空比
     TIM_OC2Init(TIM1, &TIM_OCInitStructure);
 
-    // 新增：启用预装载
+    // 高级定时器需要启用预装载
     TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
 
     // TIM_SetCounter(TIM1, 0);

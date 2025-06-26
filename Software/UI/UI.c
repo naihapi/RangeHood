@@ -27,14 +27,13 @@ int digitLength(int num)
  * @retval 无
  *
  * @note 展示内容：描述此主页的标题、主页的图标、图标框、当前页和总计页
- * @note 主页最大项取决于Menu_MaxItem_Home
  */
 void UI_Display_Home(uint8_t selected, struct MenuHome *head)
 {
     MenuHome *current;
 
     // 选择项超过最大项时，退出函数
-    if (selected > Menu_MaxItem_Home)
+    if (selected > Menu_GetHomeMaxItem(head))
         return;
 
     // 清空屏幕
@@ -51,7 +50,7 @@ void UI_Display_Home(uint8_t selected, struct MenuHome *head)
     // 主页项和总主页项显示
     OLED_ShowNum(97, 10, selected, 2, OLED_8X16);
     OLED_ShowString(100, 28, (char *)"/", OLED_6X8);
-    OLED_ShowNum(97, 36, Menu_MaxItem_Home, 2, OLED_8X16);
+    OLED_ShowNum(97, 36, Menu_GetHomeMaxItem(head), 2, OLED_8X16);
 }
 
 /**

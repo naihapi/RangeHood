@@ -37,6 +37,8 @@
 ".\objects\menu.o"
 ".\objects\build.o"
 ".\objects\ui.o"
+".\objects\mymenu.o"
+".\objects\mysystem.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
 ".\objects\croutine.o"

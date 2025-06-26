@@ -56,4 +56,6 @@
 .\objects\mytask.o: .\Software\Menu\Menu.h
 .\objects\mytask.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\mytask.o: .\Software\UI\UI.h
+.\objects\mytask.o: .\Software\MyMenu\MyMenu.h
+.\objects\mytask.o: .\Software\Build\Build.h
 .\objects\mytask.o: .\Peripheral\TIM\TIM.h

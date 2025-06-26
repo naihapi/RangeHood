@@ -340,7 +340,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER STM32F10X_LD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Hardware\WS2812;.\Hardware\OLED;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include;.\Software\Build;.\Software\Menu;.\Software\UI;.\Hardware\KEY</IncludePath>
+              <IncludePath>.\Start;.\Library;.\System;.\User;.\Hardware;.\Hardware\WS2812;.\Hardware\OLED;.\Hardware\KEY;.\Peripheral;.\Peripheral\GPIO;.\Peripheral\TIM;.\Software;.\Software\MyTask;.\Software\Delay;.\FreeRTOS\FreeRTOS_CORE;.\FreeRTOS\FreeRTOS_PORT;.\FreeRTOS\FreeRTOS_CORE\include;.\Software\Build;.\Software\Menu;.\Software\UI;.\Software\MyMenu;.\Software\MySystem</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -788,6 +788,26 @@
               <FileName>UI.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Software\UI\UI.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyMenu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Software\MyMenu\MyMenu.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyMenu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Software\MyMenu\MyMenu.h</FilePath>
+            </File>
+            <File>
+              <FileName>MySystem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Software\MySystem\MySystem.c</FilePath>
+            </File>
+            <File>
+              <FileName>MySystem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Software\MySystem\MySystem.h</FilePath>
             </File>
           </Files>
         </Group>

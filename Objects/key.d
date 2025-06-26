@@ -57,4 +57,6 @@
 .\objects\key.o: .\Software\Menu\Menu.h
 .\objects\key.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\key.o: .\Software\UI\UI.h
+.\objects\key.o: .\Software\MyMenu\MyMenu.h
+.\objects\key.o: .\Software\Build\Build.h
 .\objects\key.o: .\Peripheral\TIM\TIM.h

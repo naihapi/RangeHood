@@ -19,16 +19,12 @@
 //...
 
 // 宏定义
-#define ItemType_Switch 1             // 菜单项类型-开关型
-#define ItemType_Slider 2             // 菜单项类型-滑块型
-#define ItemType_View 3               // 菜单项类型-视图型
-#define ItemType_Custom 4             // 菜单项类型-自定义型
-#define Datahandle_None 0             // 数据处理方式-无
-#define DataHandle_OnlyRequest 1      // 数据处理方式-仅请求
-#define DataHandle_OnlyUpdate 2       // 数据处理方式-仅上传
-#define DataHandle_UpdateANDRequest 3 // 数据处理方式-请求和上传都需要
-#define SliderModule_YesSetting 1     // 滑块型组件-允许跳转最大、最小值的设置
-#define SliderModule_NotSetting 0     // 滑块型组件-不允许跳转最大、最小值的设置
+#define ItemType_Switch 1         // 菜单项类型-开关型
+#define ItemType_Slider 2         // 菜单项类型-滑块型
+#define ItemType_View 3           // 菜单项类型-视图型
+#define ItemType_Custom 4         // 菜单项类型-自定义型
+#define SliderModule_YesSetting 1 // 滑块型组件-允许跳转最大、最小值的设置
+#define SliderModule_NotSetting 0 // 滑块型组件-不允许跳转最大、最小值的设置
 
 // 菜单（1个菜单项所包含的信息）
 typedef struct MenuItem
@@ -38,7 +34,6 @@ typedef struct MenuItem
     uint8_t ItemType;      // 菜单项类型(ItemType_xxx)
     void *Function;        // 指向一个函数
     void *ItemPointer;     // 具体组件数据(Menu_xxxModule)
-    uint8_t DataHandle;    // 是否需要数据处理(DataHandle_xxx)
     uint8_t *Name;         // 外置硬件的名称
     struct MenuItem *Last; // 指向上一个菜单项
     struct MenuItem *Next; // 指向下一个菜单项
@@ -78,28 +73,45 @@ typedef struct Menu_SliderModule
     uint8_t *Unit;   // 单位
 } Menu_SliderModule;
 
-// 变量
-extern int8_t Menu_MaxItem_Home;
-extern int8_t Menu_MaxItem_Light;
-extern int8_t Menu_MaxItem_Sensor;
-extern int8_t Menu_MaxItem_Cruise;
-extern MenuHome *Menu_Head_Home;
-extern MenuItem *Menu_Head_Light;
-extern MenuItem *Menu_Head_Sensor;
-extern MenuItem *Menu_Head_Cruise;
-extern MenuItem *Menu_Head_Circle;
-extern uint8_t Menu_Title_System[];
-extern uint8_t State_OLEDDirection_LR;
-extern uint8_t State_OLEDDirection_TB;
-extern uint8_t State_Reset;
-extern int Value_OLED_NowBrightness;
-extern int Value_OLED_MaxBrightness;
-extern int Value_OLED_MiniBrightness;
-extern int Value_FreeHeap;
+// // 变量
+// extern int8_t Menu_MaxItem_Home;
+// extern int8_t Menu_MaxItem_Light;
+// extern int8_t Menu_MaxItem_Sensor;
+// extern int8_t Menu_MaxItem_Cruise;
+// extern MenuHome *Menu_Head_Home;
+// extern MenuItem *Menu_Head_Light;
+// extern MenuItem *Menu_Head_Sensor;
+// extern MenuItem *Menu_Head_Cruise;
+// extern MenuItem *Menu_Head_Circle;
+// extern uint8_t Menu_Title_System[];
+// extern uint8_t State_OLEDDirection_LR;
+// extern uint8_t State_OLEDDirection_TB;
+// extern uint8_t State_Reset;
+// extern int Value_OLED_NowBrightness;
+// extern int Value_OLED_MaxBrightness;
+// extern int Value_OLED_MiniBrightness;
+// extern int Value_FreeHeap;
 
 // API
-void Menu_InitPro(void);
+MenuHome *Menu_CreateHomeItem(const uint8_t *icon, uint8_t *title, MenuItem *menu, int8_t *maxitem);
+MenuItem *Menu_CreateItem(const uint8_t *icon, uint8_t type, void *function, void *pointer, uint8_t *name);
+Menu_SwitchModule *Mneu_CreateSwitchModule(uint8_t *state);
+Menu_ViewModule *Menu_CreateViewModule(uint8_t *description, int *value);
+Menu_SliderModule *Menu_CreateSliderModule(int *nowvalue, int *maxvalue, int *minivalue, uint8_t setting, uint8_t *unit);
+MenuItem *Menu_CreateSwitchItem(const uint8_t *icon, uint8_t *name, uint8_t *state);
+MenuItem *Menu_CreateViewItem(const uint8_t *icon, uint8_t *name, uint8_t *description, int *value);
+MenuItem *Menu_CreateSliderItem(const uint8_t *icon, uint8_t *name, int *nowvalue, int *maxvalue, int *minivalue, uint8_t *unit, uint8_t setting);
+MenuItem *Menu_CreateCustomItem(const uint8_t *icon, uint8_t *name, void *function);
 MenuHome *Menu_RetHomeItem(MenuHome *Head, uint8_t item);
 MenuItem *Menu_RetMenuItem(MenuItem *Head, uint8_t item);
+int8_t Menu_GetHomeMaxItem(MenuHome *head);
+int8_t Menu_GetMenuMaxItem(MenuItem *head);
+MenuHome *Menu_GetHomeEndItem(MenuHome *head);
+MenuItem *Menu_GetMenuEndItem(MenuItem *head);
+void Menu_ItemEachOther(MenuItem **nowitem, MenuItem *lastitem, MenuItem *nextitem);
+void Menu_Include_HomeItem(MenuHome *head, MenuHome *item);
+void Menu_Include_MenuItem(MenuItem *head, MenuItem *item);
+MenuHome *Menu_CreateHomeHead(void);
+MenuItem *Menu_CreateMenuHead(uint8_t *title);
 
 #endif

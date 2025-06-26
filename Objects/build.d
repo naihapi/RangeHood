@@ -58,3 +58,4 @@
 .\objects\build.o: .\Software\MyTask\MyTASK.h
 .\objects\build.o: .\Software\Build\Build.h
 .\objects\build.o: .\Peripheral\TIM\TIM.h
+.\objects\build.o: .\Software\MyMenu\MyMenu.h

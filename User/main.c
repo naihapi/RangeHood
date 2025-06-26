@@ -19,8 +19,7 @@ int main(void)
     //...
 
     /*---软件---*/
-    Menu_InitPro();
-    Build_InitPro();
+    MyMenu_InitPro();
 
     // WS2812显卡风扇灯光测试
     //  WS2812_SendRGB(10, 0, 0, 0);

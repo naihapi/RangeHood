@@ -58,3 +58,4 @@
 .\objects\ui.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ui.o: .\Software\UI\UI.h
 .\objects\ui.o: .\Peripheral\TIM\TIM.h
+.\objects\ui.o: .\Software\MyMenu\MyMenu.h

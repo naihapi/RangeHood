@@ -354,6 +354,7 @@ void Build_ModuleControl_Slider_KEYevent(void)
     if (KEY_RetState(KEY_NUMBER_1) == KEY_STATE_DOWNLONG) // KEY1长按事件-返回菜单
     {
         Build_SetValue(&Build_NowPage, BUILD_SV_NOWPAGE_MENU); // 切换到菜单页
+        Build_SetValue(&Build_CNT_SliderItem, 1);
 
         KEY_ClearState(KEY_NUMBER_1); // 清除状态
     }
@@ -556,6 +557,12 @@ void Build_ModuleControl(void)
  */
 void Build_ControlPro(void)
 {
+    if (Build_NowPage == BUILD_SV_NOWPAGE_MODULE)
+    {
+        // 当前页：组件页
+        Build_ModuleControl();
+    }
+
     if (Build_NowPage == BUILD_SV_NOWPAGE_MENU)
     {
         // 当前页：菜单页
@@ -567,12 +574,21 @@ void Build_ControlPro(void)
         // 当前页：主页
         Build_HomeControl();
     }
+}
 
-    if (Build_NowPage == BUILD_SV_NOWPAGE_MODULE)
-    {
-        // 当前页：组件页
-        Build_ModuleControl();
-    }
+/**
+ * @brief 选定启动默认页
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 无
+ */
+void Build_Select_NormalPage(MenuHome *menuhome)
+{
+    // 选定默认页
+    Build_NowHomeItem = Menu_RetHomeItem(menuhome, 1);
 }
 
 /**
@@ -586,6 +602,4 @@ void Build_ControlPro(void)
  */
 void Build_InitPro(void)
 {
-    // 选定默认页
-    Build_NowHomeItem = Menu_RetHomeItem(Menu_Head_Home, 1);
 }

@@ -22,5 +22,7 @@
 
 // API
 void Build_ControlPro(void);
+void Build_InitPro(void);
+void Build_Select_NormalPage(MenuHome *menuhome);
 
 #endif

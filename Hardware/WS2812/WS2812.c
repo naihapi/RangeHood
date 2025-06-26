@@ -22,14 +22,10 @@ void WS2812_SendByte(uint8_t Byte)
             GPIO_WS2812_PinConfig(1);
             Delay_us(1);
 
-            // 经测试，函数封装导致时序变慢，所以直接切换电平
             GPIO_WS2812_PinConfig(0);
-            // GPIO_ResetBits(GPIOA, GPIO_Pin_12);
         }
         else
         {
-            // 经测试，函数封装导致时序变慢，所以直接切换电平
-            // GPIO_SetBits(GPIOA, GPIO_Pin_12);
             GPIO_WS2812_PinConfig(1);
 
             GPIO_WS2812_PinConfig(0);
