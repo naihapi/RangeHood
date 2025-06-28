@@ -18,8 +18,8 @@ uint8_t State_OLEDDirection_TB = 0; // 系统-OLED显示上下方向（0：正�
 /*---状态(开关组件)---*/
 
 /*---数值(视图组件|滑块组件)---*/
-int Value_Fan_NowSpeed = 2;        // 风扇当前速度
-int Value_Fan_MaxSpeed = 3;        // 风扇最大速度
+int Value_Fan_NowSpeed = 1;        // 风扇当前速度
+int Value_Fan_MaxSpeed = 5;        // 风扇最大速度
 int Value_Fan_MiniSpeed = 1;       // 风扇最小速度
 int Value_OLED_NowBrightness = 2;  // 系统-OLED当前亮度
 int Value_OLED_MaxBrightness = 3;  // 系统-OLED可调节的最大亮度
@@ -68,8 +68,8 @@ void MyMenu_Create_HomeItem(void)
     Menu_Head_Home = Menu_CreateHomeHead();
 
     // 创建项
-    MenuHome *system = Menu_CreateHomeItem(OLEDData_Icon_Home_System, Menu_Title_System, Menu_Head_System, &Menu_MaxItem_System);
-    MenuHome *fan = Menu_CreateHomeItem(OLEDData_Icon_Home_Light, Menu_Title_Fan, Menu_Head_Fan, &Menu_MaxItem_Fan);
+    MenuHome *system = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_System, Menu_Title_System, Menu_Head_System, &Menu_MaxItem_System);
+    MenuHome *fan = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Fan, Menu_Title_Fan, Menu_Head_Fan, &Menu_MaxItem_Fan);
 
     // 菜单头包含
     Menu_Include_HomeItem(Menu_Head_Home, system);
@@ -91,8 +91,8 @@ void MyMenu_Create_MenuItem_Fan(void)
     Menu_Head_Fan = Menu_CreateMenuHead(Menu_Title_Fan);
 
     // 创建项
-    MenuItem *fanstate = Menu_CreateSwitchItem(OLEDData_Icon_LEDfront, Name_Fan_State, &State_Fan);
-    MenuItem *fanspeed = Menu_CreateSliderItem(OLEDData_Icon_LEDbottom, Name_Fan_Speed, &Value_Fan_NowSpeed, &Value_Fan_MaxSpeed, &Value_Fan_MiniSpeed, Unit_Fan_Speed, SliderModule_NotSetting);
+    MenuItem *fanstate = Menu_CreateSwitchItem(OLEDData_Icon_FanState, Name_Fan_State, &State_Fan);
+    MenuItem *fanspeed = Menu_CreateSliderItem(OLEDData_Icon_FanSpeed, Name_Fan_Speed, &Value_Fan_NowSpeed, &Value_Fan_MaxSpeed, &Value_Fan_MiniSpeed, Unit_Fan_Speed, SliderModule_NotSetting);
 
     // 菜单头包含
     Menu_Include_MenuItem(Menu_Head_Fan, fanstate);

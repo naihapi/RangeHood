@@ -4,6 +4,8 @@
 // MCU型号
 #include "stm32f10x.h"
 
+#include "MySystem.h"
+
 // 标准库
 #include "stdint.h"
 #include "string.h"

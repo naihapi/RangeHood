@@ -22,14 +22,23 @@ int main(void)
     MyMenu_InitPro();
 
     // WS2812显卡风扇灯光测试
-    //  WS2812_SendRGB(10, 0, 0, 0);
-    //  Delay_ms(100);
+    // WS2812_SendRGB(12, 0, 0, 0);
+    // Delay_ms(100);
 
-    // for (uint8_t i = 1; i < 11; i++)
+    // for (uint8_t j = 0; j < 100; j += 1)
     // {
-    //     WS2812_SendRGB(i, 100, 100, 100);
-    //     Delay_ms(1000);
+    //     WS2812_SendRGB(12, j, j, j);
+    //     Delay_ms(100);
     // }
+
+    // WS2812_SendRGB(12, 100, 0, 0);
+    // Delay_ms(1000);
+
+    // WS2812_SendRGB(12, 0, 100, 0);
+    // Delay_ms(1000);
+
+    // WS2812_SendRGB(12, 0, 0, 100);
+    // Delay_ms(1000);
 
     /*开启任务调度*/
     TASK_InitPro();

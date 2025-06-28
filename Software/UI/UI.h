@@ -10,11 +10,16 @@
 // 软件
 #include "MyTASK.h"
 #include "MyMenu.h"
+#include "Menu.h"
 
 // RTOS头文件
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "task.h"
+
+//变量
+typedef struct MenuItem MenuItem;
+typedef struct MenuHome MenuHome;
 
 // API
 void UI_InitPro(void);

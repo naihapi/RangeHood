@@ -8,6 +8,8 @@
         "main.h": "c",
         "random": "c",
         "menu.h": "c",
-        "stm32f10x.h": "c"
+        "stm32f10x.h": "c",
+        "mymenu.h": "c",
+        "ws2812.h": "c"
     }
 }

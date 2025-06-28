@@ -338,6 +338,8 @@ void OLED_Update(void)
 {
     taskENTER_CRITICAL();
 
+    MySystem_OLED_Function();
+
     uint8_t j;
     /*遍历每一页*/
     for (j = 0; j < 8; j++)
