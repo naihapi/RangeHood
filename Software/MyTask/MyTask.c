@@ -65,10 +65,6 @@ void TASK3(void *pvParameters)
 void TASK4(void *pvParameters)
 {
     OLED_Init();
-
-    OLED_ShowString(0, 0, "naihapi", OLED_6X8);
-    OLED_Update();
-
     while (1)
     {
         Build_ControlPro();
@@ -102,6 +98,10 @@ void TASK6(void *pvParameters)
 {
     while (1)
     {
+        Flash_SavaData();
+        MySystem_GetFreeHeap();
+
+        vTaskDelay(1000);
     }
 }
 
@@ -114,6 +114,8 @@ void TASK7(void *pvParameters)
 {
     while (1)
     {
+        MySystem_FanSpeed_Function();
+        vTaskDelay(100);
     }
 }
 

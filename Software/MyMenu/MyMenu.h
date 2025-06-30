@@ -17,6 +17,9 @@ extern uint8_t State_OLEDMode;
 extern int Value_OLED_NowBrightness;
 extern MenuHome *Menu_Head_Home;
 extern int8_t Menu_MaxItem_Home;
+extern int Value_FreeHeap;
+extern int Value_Fan_NowSpeed;
+extern uint8_t State_Fan;
 
 // API
 void MyMenu_InitPro(void);

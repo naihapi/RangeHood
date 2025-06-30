@@ -25,13 +25,9 @@ extern const uint8_t Diode[];
 extern const uint8_t OLEDData_Icon_Welcome[];
 extern const uint8_t OLEDData_Icon_FanState[];
 extern const uint8_t OLEDData_Icon_FanSpeed[];
-extern const uint8_t OLEDData_Icon_UltraSound[];
 extern const uint8_t OLEDData_Icon_HomeItem_Fan[];
-extern const uint8_t OLEDData_Icon_Home_Sensor[];
-extern const uint8_t OLEDData_Icon_Home_View[];
-extern const uint8_t OLEDData_Icon_Home_Cruise[];
-extern const uint8_t OLEDData_Icon_Home_Circle[];
 extern const uint8_t OLEDData_Icon_HomeItem_System[];
+extern const uint8_t OLEDData_Icon_HomeItem_Light[];
 extern const uint8_t OLEDData_Icon_Display[];
 extern const uint8_t OLEDData_Icon_Brightness[];
 extern const uint8_t OLEDData_Icon_DirLR[];
@@ -42,7 +38,6 @@ extern const uint8_t OLEDData_Icon_RequestFail[];
 extern const uint8_t OLEDData_Icon_Speed[];
 extern const uint8_t OLEDData_Icon_Cruise[];
 extern const uint8_t OLEDData_Icon_FreeHeap[];
-extern const uint8_t OLEDData_Icon_Home_Normal[];
 /*按照上面的格式，在这个位置加入新的图像数据声明*/
 //...
 

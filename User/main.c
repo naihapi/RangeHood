@@ -14,6 +14,7 @@ int main(void)
     /*---外设---*/
     GPIO_InitPro();
     TIM_InitPro();
+    FLash_InitPro();
 
     /*---外件---*/
     //...

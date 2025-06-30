@@ -135,6 +135,20 @@ void MySystem_OLED_Function(void)
 }
 
 /**
+ * @brief 获取RTOS的剩余堆空间
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 此函数需要全速运行
+ */
+void MySystem_GetFreeHeap(void)
+{
+    Value_FreeHeap = xPortGetFreeHeapSize();
+}
+
+/**
  * @brief 灯光颜色更新
  *
  * @param 无
@@ -303,4 +317,23 @@ void MySystem_Fanlight_GradualChange_Different(void)
 {
 }
 
-void MySystem_Fanlight_Function(void) {}
+/**
+ * @brief 风扇转速控制
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 档位控制1:20
+ */
+void MySystem_FanSpeed_Function(void)
+{
+    if (!State_Fan)
+    {
+        TIM_FAN_SetDuty(0);
+    }
+    else
+    {
+        TIM_FAN_SetDuty(Value_Fan_NowSpeed * 20);
+    }
+}

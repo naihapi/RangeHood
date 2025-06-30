@@ -29,6 +29,7 @@
 // 外设
 #include "TIM.h"
 #include "GPIO.h"
+#include "FLASH.h"
 
 // 变量
 //...
@@ -52,22 +53,22 @@ void TASK15(void *pvParameters);
 void Task_Start(void *pvParameters);
 
 // RTOS可压栈空间(局部变量、调用函数信息、上下文信息)
-#define TASK1_STACK_SIZE 128
-#define TASK2_STACK_SIZE 128
-#define TASK3_STACK_SIZE 128
+#define TASK1_STACK_SIZE 64
+#define TASK2_STACK_SIZE 64
+#define TASK3_STACK_SIZE 64
 #define TASK4_STACK_SIZE 128
-#define TASK5_STACK_SIZE 128
-#define TASK6_STACK_SIZE 128
-#define TASK7_STACK_SIZE 128
-#define TASK8_STACK_SIZE 128
-#define TASK9_STACK_SIZE 128
-#define TASK10_STACK_SIZE 128
-#define TASK11_STACK_SIZE 128
-#define TASK12_STACK_SIZE 128
-#define TASK13_STACK_SIZE 128
-#define TASK14_STACK_SIZE 128
-#define TASK15_STACK_SIZE 128
-#define TASK_START_STACK_SIZE 128
+#define TASK5_STACK_SIZE 64
+#define TASK6_STACK_SIZE 64
+#define TASK7_STACK_SIZE 64
+#define TASK8_STACK_SIZE 64
+#define TASK9_STACK_SIZE 64
+#define TASK10_STACK_SIZE 64
+#define TASK11_STACK_SIZE 64
+#define TASK12_STACK_SIZE 64
+#define TASK13_STACK_SIZE 64
+#define TASK14_STACK_SIZE 64
+#define TASK15_STACK_SIZE 64
+#define TASK_START_STACK_SIZE 64
 
 // RTOS优先级
 #define TASK1_PRIORITY 1

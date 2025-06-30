@@ -220,7 +220,7 @@ void Build_ModuleControl_View_KEYevent(void)
     {
         Build_SetValue(&Build_NowPage, BUILD_SV_NOWPAGE_MENU); // 切换到菜单页
 
-        KEY_ClearState(KEY_NUMBER_2);
+        KEY_ClearState(KEY_NUMBER_1);
     }
     /*~~~~~~~~~~~~有用事件~~~~~~~~~~~~*/
 

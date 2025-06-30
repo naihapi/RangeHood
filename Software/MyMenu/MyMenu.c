@@ -1,14 +1,14 @@
 #include "MyMenu.h"
 
-/*---菜单项名称(标题、请求体)---*/
+/*---菜单项名称---*/
 uint8_t Name_Fan_State[] = "FanState";        // 风扇状态
 uint8_t Name_Fan_Speed[] = "FanSpeed";        // 风扇速度
 uint8_t Name_OLEDMode[] = "Display";          // 系统-OLED显示模式
 uint8_t Name_OLEDBrightness[] = "Brightness"; // 系统-OLED亮度
 uint8_t Name_OLEDDirection_LR[] = "Dir-LR";   // 系统-OLED左右方向
 uint8_t Name_OLEDDirection_TB[] = "Dir-TB";   // 系统-OLED上下方向
-uint8_t Name_FreeHeap[] = "FreeHeap";         // 剩余堆空间
-/*---菜单项名称(标题、请求体)---*/
+uint8_t Name_FreeHeap[] = "FreeHeap";         // 系统-剩余堆空间
+/*---菜单项名称---*/
 
 /*---状态(开关组件)---*/
 uint8_t State_Fan = 0;              // 风扇开关状态（0：关闭，1：开启）
@@ -39,18 +39,21 @@ uint8_t Description_FreeHeap[] = "Byte"; // 系统-剩余堆字节
 /*---主页项标题---*/
 uint8_t Menu_Title_System[] = {"System"}; // 系统
 uint8_t Menu_Title_Fan[] = {"Fan"};       // 风扇
+uint8_t Menu_Title_Light[] = {"Light"};   // 灯光
 /*---主页项标题---*/
 
 /*---最大项---*/
 int8_t Menu_MaxItem_Home = 0;   // 主页项
 int8_t Menu_MaxItem_System = 0; // 系统菜单项
 int8_t Menu_MaxItem_Fan = 0;    // 风扇菜单项
+int8_t Menu_MaxItem_Light = 0;  // 灯光菜单项
 /*---最大项---*/
 
 /*---主页项---*/
 MenuHome *Menu_Head_Home;   // 主页头
 MenuItem *Menu_Head_System; // 系统页
 MenuItem *Menu_Head_Fan;    // 风扇页
+MenuItem *Menu_Head_Light;  // 灯光页
 /*---主页项---*/
 
 /**
@@ -70,6 +73,7 @@ void MyMenu_Create_HomeItem(void)
     // 创建项
     MenuHome *system = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_System, Menu_Title_System, Menu_Head_System, &Menu_MaxItem_System);
     MenuHome *fan = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Fan, Menu_Title_Fan, Menu_Head_Fan, &Menu_MaxItem_Fan);
+    MenuHome *light = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Light, Menu_Title_Light, Menu_Head_Light, &Menu_MaxItem_Light);
 
     // 菜单头包含
     Menu_Include_HomeItem(Menu_Head_Home, system);
@@ -98,52 +102,6 @@ void MyMenu_Create_MenuItem_Fan(void)
     Menu_Include_MenuItem(Menu_Head_Fan, fanstate);
     Menu_Include_MenuItem(Menu_Head_Fan, fanspeed);
 }
-
-/**
-//  * @brief 创建“传感器”菜单项
-//  *
-//  * @param 无
-//  *
-//  * @retval 无
-//  *
-//  * @note 无
-//  */
-// void MyMenu_Create_MenuItem_Sensor(void)
-// {
-//     // 创建菜单头
-//     Menu_Head_Sensor = Menu_CreateMenuHead(Menu_Title_Sensor);
-
-//     // 创建项
-//     MenuItem *ultra = Menu_CreateViewItem(OLEDData_Icon_UltraSound, Name_UltraSound, Description_UltraSound, &Value_UltraSound_Distance, DataHandle_OnlyRequest);
-
-//     // 菜单头包含
-//     Menu_Include_MenuItem(Menu_Head_Sensor, ultra);
-// }
-
-// /**
-//  * @brief 创建“定速巡航”菜单项
-//  *
-//  * @param 无
-//  *
-//  * @retval 无
-//  *
-//  * @note 无
-//  */
-// void MyMenu_Create_MenuItem_Cruise(void)
-// {
-//     // 创建菜单头
-//     Menu_Head_Cruise = Menu_CreateMenuHead(Menu_Title_Cruise);
-
-//     // 创建项
-//     MenuItem *speed = Menu_CreateSliderItem(OLEDData_Icon_Speed, Name_CruiseSpeed, &Value_Cruise_NowSpeed, &Value_Cruise_MaxSpeed, &Value_Cruise_MiniSpeed, Unit_Cruise_Speed, SliderModule_YesSetting, DataHandle_UpdateANDRequest); // 创建“速度”项
-//     MenuItem *ultra = Menu_CreateSwitchItem(OLEDData_Icon_UltraSound, Name_UltraSound, &State_UltraSound, DataHandle_UpdateANDRequest);                                                                                               // 创建“超声波”项
-//     MenuItem *cruise = Menu_CreateSwitchItem(OLEDData_Icon_Cruise, Name_CruiseState, &State_CruiseState, DataHandle_UpdateANDRequest);
-
-//     // 菜单头包含
-//     Menu_Include_MenuItem(Menu_Head_Cruise, speed);
-//     Menu_Include_MenuItem(Menu_Head_Cruise, ultra);
-//     Menu_Include_MenuItem(Menu_Head_Cruise, cruise);
-// }
 
 /**
  * @brief 创建“系统设置”菜单项

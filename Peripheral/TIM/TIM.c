@@ -41,8 +41,7 @@ void TIM_Delay_Init(void)
  *
  * @retval 无
  *
- * @note 此函数用于WS2812输出
- * @note 请注意，此函数未配置完成
+ * @note 风速PWM控制,输出到TIP122
  */
 void TIM_FAN_Init(void)
 {
@@ -67,6 +66,11 @@ void TIM_FAN_Init(void)
 
     TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
     TIM_Cmd(TIM1, ENABLE);
+}
+
+void TIM_FAN_SetDuty(uint8_t Dutyx)
+{
+    TIM_SetCompare1(TIM1, Dutyx);
 }
 
 /**
