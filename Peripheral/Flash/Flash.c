@@ -110,6 +110,11 @@ void Flash_RecoverData(void)
     State_OLEDDirection_TB = Flash_Buffer[4];
     Value_Fan_NowSpeed = Flash_Buffer[5];
     State_Fan = Flash_Buffer[6];
+    Value_Light_Red_NowColor = Flash_Buffer[7];
+    Value_Light_Green_NowColor = Flash_Buffer[8];
+    Value_Light_Blue_NowColor = Flash_Buffer[9];
+    State_Light = Flash_Buffer[10];
+    State_Light_Auto = Flash_Buffer[11];
 }
 
 /**
@@ -133,6 +138,11 @@ void Flash_SavaData(void)
     Flash_Buffer[4] = State_OLEDDirection_TB;
     Flash_Buffer[5] = Value_Fan_NowSpeed;
     Flash_Buffer[6] = State_Fan;
+    Flash_Buffer[7] = Value_Light_Red_NowColor;
+    Flash_Buffer[8] = Value_Light_Green_NowColor;
+    Flash_Buffer[9] = Value_Light_Blue_NowColor;
+    Flash_Buffer[10] = State_Light;
+    Flash_Buffer[11] = State_Light_Auto;
 
     // 保存数据到Flash
     Flash_WriteBuffer(FLASH_ADDR_ENDPAGE, Flash_Buffer, FLASH_LENGTH_16BIT);

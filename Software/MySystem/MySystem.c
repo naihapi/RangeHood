@@ -4,6 +4,7 @@ WS2812_t MySystem_WS2812_Buffer[MYSYSTEM_WS2812_NUMBER];
 uint8_t MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_INCREASE;   // MYSYSTEM_WS2812_GC_xxx
 uint8_t MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_INCREASE; // MYSYSTEM_WS2812_GC_xxx
 uint8_t MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_INCREASE;  // MYSYSTEM_WS2812_GC_xxx
+uint8_t MySystem_Fanlight_InitFlag = 0;                                                // 风扇灯光初始化标志位(0:未初始化 1:已初始化)
 
 void MySystem_InitPro(void)
 {
@@ -184,7 +185,6 @@ void MySystem_Fanlight_Update(void)
  */
 void MySystem_Fanlight_SetColor(uint8_t Red, uint8_t Green, uint8_t Blue)
 {
-
     for (uint8_t i = 0; i < MYSYSTEM_WS2812_NUMBER; i++)
     {
         MySystem_WS2812_Buffer[i].Red = Red;
@@ -200,7 +200,7 @@ void MySystem_Fanlight_SetColor(uint8_t Red, uint8_t Green, uint8_t Blue)
  *
  * @retval 无
  *
- * @note 无
+ * @note 为灯光赋初始值
  */
 void MySystem_Fanlight_GradualChange_Same_Init(void)
 {
@@ -223,7 +223,7 @@ void MySystem_Fanlight_GradualChange_Same_Init(void)
  */
 void MySystem_Fanlight_GradualChange_Same(void)
 {
-    uint8_t step = 1;  // 步长
+    uint8_t step = 5;  // 步长
     uint8_t max = 250; // 最大值
     uint8_t mini = 5;  // 最小值
 
@@ -282,10 +282,6 @@ void MySystem_Fanlight_GradualChange_Same(void)
                 MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_INCREASE;
             }
         }
-
-        MySystem_Fanlight_SetColor(MySystem_WS2812_Buffer[j].Red,
-                                   MySystem_WS2812_Buffer[j].Green,
-                                   MySystem_WS2812_Buffer[j].Blue);
     }
 }
 
@@ -315,6 +311,62 @@ void MySystem_Fanlight_GradualChange_Different_Init(void)
  */
 void MySystem_Fanlight_GradualChange_Different(void)
 {
+}
+
+/**
+ * @brief 风扇灯光初始化汇总
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 无
+ */
+void MySystem_Fanlight_Function_Init(void)
+{
+    MySystem_Fanlight_GradualChange_Same_Init();
+}
+
+/**
+ * @brief 风扇灯光功能函数
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 灯光采用缓冲数组+update方式
+ */
+void MySystem_Fanlight_Function(void)
+{
+
+    if (State_Light)
+    {
+        if (!MySystem_Fanlight_InitFlag)
+        {
+            // 重新打开State_Light时,函数MySystem_Fanlight_Function_Init将再次执行1次
+            MySystem_Fanlight_Function_Init();
+            MySystem_Fanlight_InitFlag = 1;
+        }
+
+        if (State_Light_Auto)
+        {
+            // 自动模式时,颜色渐变
+            MySystem_Fanlight_GradualChange_Same();
+        }
+        else
+        {
+            // 非自动模式时,颜色根据NowColor的值来显示
+            MySystem_Fanlight_SetColor(Value_Light_Red_NowColor * 10, Value_Light_Green_NowColor * 10, Value_Light_Blue_NowColor * 10);
+        }
+    }
+
+    if (!State_Light)
+    {
+        MySystem_Fanlight_SetColor(0, 0, 0); // 关闭灯光
+        MySystem_Fanlight_InitFlag = 0;      // 重置初始化标志
+    }
+
+    MySystem_Fanlight_Update();
 }
 
 /**

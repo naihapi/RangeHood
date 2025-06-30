@@ -22,11 +22,13 @@ void WS2812_SendByte(uint8_t Byte)
             GPIO_WS2812_PinConfig(1);
             Delay_us(1);
 
-            GPIO_WS2812_PinConfig(0);
+            GPIO_ResetBits(GPIOA, GPIO_Pin_12);
+            // GPIO_WS2812_PinConfig(0);
         }
         else
         {
-            GPIO_WS2812_PinConfig(1);
+            // GPIO_WS2812_PinConfig(1);
+            GPIO_SetBits(GPIOA, GPIO_Pin_12);
 
             GPIO_WS2812_PinConfig(0);
             Delay_us(1);

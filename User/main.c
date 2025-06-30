@@ -23,7 +23,10 @@ int main(void)
     MyMenu_InitPro();
 
     // WS2812显卡风扇灯光测试
-    // WS2812_SendRGB(12, 0, 0, 0);
+    // WS2812_SendRGB(15, 0, 0, 0);
+    // Delay_ms(100);
+
+    // WS2812_SendRGB(12, 100, 100, 100);
     // Delay_ms(100);
 
     // for (uint8_t j = 0; j < 100; j += 1)

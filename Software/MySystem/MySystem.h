@@ -30,5 +30,7 @@ void MySystem_Fanlight_GradualChange_Same(void);
 void MySystem_Fanlight_Update(void);
 void MySystem_GetFreeHeap(void);
 void MySystem_FanSpeed_Function(void);
+void MySystem_Fanlight_Function_Init(void);
+void MySystem_Fanlight_Function(void);
 
 #endif

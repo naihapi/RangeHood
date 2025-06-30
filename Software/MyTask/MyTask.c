@@ -79,13 +79,12 @@ void TASK4(void *pvParameters)
  */
 void TASK5(void *pvParameters)
 {
-    MySystem_Fanlight_GradualChange_Same_Init();
+    MySystem_Fanlight_Function_Init();
     while (1)
     {
-        MySystem_Fanlight_GradualChange_Same();
-        MySystem_Fanlight_Update();
+        MySystem_Fanlight_Function();
 
-        vTaskDelay(1500);
+        vTaskDelay(500);
     }
 }
 

@@ -20,6 +20,11 @@ extern int8_t Menu_MaxItem_Home;
 extern int Value_FreeHeap;
 extern int Value_Fan_NowSpeed;
 extern uint8_t State_Fan;
+extern int Value_Light_Red_NowColor;
+extern int Value_Light_Green_NowColor;
+extern int Value_Light_Blue_NowColor;
+extern uint8_t State_Light;
+extern uint8_t State_Light_Auto;
 
 // API
 void MyMenu_InitPro(void);
