@@ -53,7 +53,7 @@ void TIM_FAN_Init(void)
     TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInitStructure.TIM_Period = 100 - 1;   // ARR
-    TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1; // PSC
+    TIM_TimeBaseInitStructure.TIM_Prescaler = 36 - 1; // PSC
     TIM_TimeBaseInitStructure.TIM_RepetitionCounter = DISABLE;
     TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
 

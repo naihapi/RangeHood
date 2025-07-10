@@ -20,12 +20,12 @@ uint8_t State_Fan = 1;              // 风扇开关状态（0：关闭，1：开
 uint8_t State_Light = 1;            // 灯开关状态（0：关闭，1：开启）
 uint8_t State_Light_Auto = 1;       // 灯自动模式（0：手动模式，1：自动模式）
 uint8_t State_OLEDMode = 0;         // 系统-OLED显示模式（0：深色系，1：浅色系）
-uint8_t State_OLEDDirection_LR = 0; // 系统-OLED显示左右方向（0：正常，1：左右反置）
-uint8_t State_OLEDDirection_TB = 0; // 系统-OLED显示上下方向（0：正常，1：上下反置）
+uint8_t State_OLEDDirection_LR = 1; // 系统-OLED显示左右方向（0：正常，1：左右反置）
+uint8_t State_OLEDDirection_TB = 1; // 系统-OLED显示上下方向（0：正常，1：上下反置）
 /*---状态(开关组件)---*/
 
 /*---数值(视图组件|滑块组件)---*/
-int Value_Fan_NowSpeed = 1;          // 风扇当前速度
+int Value_Fan_NowSpeed = 5;          // 风扇当前速度
 int Value_Fan_MaxSpeed = 5;          // 风扇最大速度
 int Value_Fan_MiniSpeed = 1;         // 风扇最小速度
 int Value_Light_Red_NowColor = 1;    // 当前红色数值
