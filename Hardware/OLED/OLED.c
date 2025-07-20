@@ -144,7 +144,8 @@ void OLED_WriteCommand(uint8_t Command)
     // OLED_I2C_SendByte(0x00);    // 控制字节，给0x00，表示即将写命令
     // OLED_I2C_SendByte(Command); // 写入指定的命令
     // OLED_I2C_Stop();            // I2C终止
-    IIC1_WriteCommand(Command, 0x78);
+
+    IIC1_OLED_WriteCommand(Command);
 }
 
 /**
@@ -166,6 +167,7 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count)
     //     OLED_I2C_SendByte(Data[i]); // 依次发送Data的每一个数据
     // }
     // OLED_I2C_Stop(); // I2C终止
+
     IIC1_OLED_WriteData(Data, Count);
 }
 

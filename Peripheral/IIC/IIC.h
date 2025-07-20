@@ -18,7 +18,7 @@
 // API
 void IIC_InitPro(void);
 uint8_t IIC1_WaitEvent(I2C_TypeDef *I2Cx, uint32_t I2C_EVENT);
-void IIC1_WriteCommand(uint8_t Command, uint8_t Address);
+void IIC1_OLED_WriteCommand(uint8_t Command);
 void IIC1_OLED_WriteData(uint8_t *Data, uint8_t Count);
 
 #endif

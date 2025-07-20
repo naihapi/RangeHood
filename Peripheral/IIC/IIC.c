@@ -83,7 +83,7 @@ uint8_t IIC1_WaitEvent(I2C_TypeDef *I2Cx, uint32_t I2C_EVENT)
  *
  * @note 此函数适用于OLED，以对接江科大的显示库
  */
-void IIC1_WriteCommand(uint8_t Command, uint8_t Addr)
+void IIC1_OLED_WriteCommand(uint8_t Command)
 {
     // I2C起始
     I2C_GenerateSTART(I2C1, ENABLE);
