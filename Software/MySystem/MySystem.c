@@ -149,6 +149,10 @@ void MySystem_GetFreeHeap(void)
     Value_FreeHeap = xPortGetFreeHeapSize();
 }
 
+void MySystem_Fanlight_Timer_Function(void)
+{
+}
+
 /**
  * @brief 灯光颜色更新
  *

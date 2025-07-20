@@ -1,7 +1,5 @@
 #include "MyTASK.h"
 
-TimerHandle_t TIMER1_Handler;
-TimerHandle_t TIMER2_Handler;
 TaskHandle_t TASK1_Handler;
 TaskHandle_t TASK2_Handler;
 TaskHandle_t TASK3_Handler;
@@ -12,27 +10,12 @@ TaskHandle_t TASK7_Handler;
 TaskHandle_t TASK8_Handler;
 TaskHandle_t TASK9_Handler;
 TaskHandle_t TASK10_Handler;
-TaskHandle_t TASK11_Handler;
-TaskHandle_t TASK12_Handler;
-TaskHandle_t TASK13_Handler;
-TaskHandle_t TASK14_Handler;
-TaskHandle_t TASK15_Handler;
+// TaskHandle_t TASK11_Handler;
+// TaskHandle_t TASK12_Handler;
+// TaskHandle_t TASK13_Handler;
+// TaskHandle_t TASK14_Handler;
+// TaskHandle_t TASK15_Handler;
 TaskHandle_t TASK_START_Handler;
-
-uint32_t ms = 0;
-void TIMER1(TimerHandle_t xTimer)
-{
-    // 获取当前嘀嗒计数
-    TickType_t xTickCount = xTaskGetTickCount();
-
-    // 转换为毫秒
-    ms = xTickCount * portTICK_PERIOD_MS;
-}
-
-void TIMER2(TimerHandle_t xTimer)
-{
-    TickType_t xTickCount = xTaskGetTickCount();
-}
 
 /**
  * @brief 任务1
@@ -114,7 +97,7 @@ void TASK6(void *pvParameters)
 {
     while (1)
     {
-        Flash_SavaData();
+        Flash_Function();
         MySystem_GetFreeHeap();
 
         vTaskDelay(1000);
@@ -231,15 +214,6 @@ void TASK15(void *pvParameters)
     }
 }
 
-void Timer_Init(void)
-{
-    TIMER1_Handler = xTimerCreate((char *)"TIMER1", pdMS_TO_TICKS(5 * 1000), pdTRUE, (void *)0, TIMER1);
-    TIMER2_Handler = xTimerCreate("TIMER2", pdMS_TO_TICKS(10 * 1000), pdTRUE, (void *)1, TIMER2);
-
-    xTimerStart(TIMER1_Handler, 0);
-    xTimerStart(TIMER2_Handler, 0);
-}
-
 /**
  * @brief 打开任务
  *
@@ -252,7 +226,6 @@ void Timer_Init(void)
 void Task_Start(void *pvParameters)
 {
     taskENTER_CRITICAL(); // 进入临界区(中断关闭)
-    Timer_Init();
 
     xTaskCreate((TaskFunction_t)TASK1,
                 (char *)"TASK1",
@@ -324,40 +297,40 @@ void Task_Start(void *pvParameters)
                 (UBaseType_t)TASK10_PRIORITY,
                 (TaskHandle_t *)&TASK10_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK11,
-                (char *)"TASK11",
-                (configSTACK_DEPTH_TYPE)TASK11_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK11_PRIORITY,
-                (TaskHandle_t *)&TASK11_Handler);
+    // xTaskCreate((TaskFunction_t)TASK11,
+    //             (char *)"TASK11",
+    //             (configSTACK_DEPTH_TYPE)TASK11_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK11_PRIORITY,
+    //             (TaskHandle_t *)&TASK11_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK12,
-                (char *)"TASK12",
-                (configSTACK_DEPTH_TYPE)TASK12_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK12_PRIORITY,
-                (TaskHandle_t *)&TASK12_Handler);
+    // xTaskCreate((TaskFunction_t)TASK12,
+    //             (char *)"TASK12",
+    //             (configSTACK_DEPTH_TYPE)TASK12_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK12_PRIORITY,
+    //             (TaskHandle_t *)&TASK12_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK13,
-                (char *)"TASK13",
-                (configSTACK_DEPTH_TYPE)TASK13_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK13_PRIORITY,
-                (TaskHandle_t *)&TASK13_Handler);
+    // xTaskCreate((TaskFunction_t)TASK13,
+    //             (char *)"TASK13",
+    //             (configSTACK_DEPTH_TYPE)TASK13_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK13_PRIORITY,
+    //             (TaskHandle_t *)&TASK13_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK14,
-                (char *)"TASK14",
-                (configSTACK_DEPTH_TYPE)TASK14_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK14_PRIORITY,
-                (TaskHandle_t *)&TASK14_Handler);
+    // xTaskCreate((TaskFunction_t)TASK14,
+    //             (char *)"TASK14",
+    //             (configSTACK_DEPTH_TYPE)TASK14_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK14_PRIORITY,
+    //             (TaskHandle_t *)&TASK14_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK15,
-                (char *)"TASK15",
-                (configSTACK_DEPTH_TYPE)TASK15_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK15_PRIORITY,
-                (TaskHandle_t *)&TASK15_Handler);
+    // xTaskCreate((TaskFunction_t)TASK15,
+    //             (char *)"TASK15",
+    //             (configSTACK_DEPTH_TYPE)TASK15_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK15_PRIORITY,
+    //             (TaskHandle_t *)&TASK15_Handler);
 
     vTaskDelete(NULL);   // 删除任务
     taskEXIT_CRITICAL(); // 退出临界区(中断打开)

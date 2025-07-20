@@ -31,6 +31,7 @@
 #include "TIM.h"
 #include "GPIO.h"
 #include "FLASH.h"
+#include "IIC.h"
 
 // 变量
 //...

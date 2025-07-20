@@ -118,6 +118,29 @@ void GPIO_FAN_Init(void)
 }
 
 /**
+ * @brief OLED引脚初始化
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note IIC1：PB6-SCL PB7-SDA
+ */
+void GPIO_OLED_Init(void)
+{
+    // 开启时钟
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+
+    // 配置GPIO
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+}
+
+/**
  * @brief 按键初始化
  *
  * @param 无
@@ -211,4 +234,5 @@ void GPIO_InitPro(void)
     GPIO_WS2812_Init();
     GPIO_FAN_Init();
     GPIO_KEY_Init();
+    GPIO_OLED_Init();
 }

@@ -139,11 +139,12 @@ void OLED_I2C_SendByte(uint8_t Byte)
  */
 void OLED_WriteCommand(uint8_t Command)
 {
-    OLED_I2C_Start();           // I2C起始
-    OLED_I2C_SendByte(0x78);    // 发送OLED的I2C从机地址
-    OLED_I2C_SendByte(0x00);    // 控制字节，给0x00，表示即将写命令
-    OLED_I2C_SendByte(Command); // 写入指定的命令
-    OLED_I2C_Stop();            // I2C终止
+    // OLED_I2C_Start();           // I2C起始
+    // OLED_I2C_SendByte(0x78);    // 发送OLED的I2C从机地址
+    // OLED_I2C_SendByte(0x00);    // 控制字节，给0x00，表示即将写命令
+    // OLED_I2C_SendByte(Command); // 写入指定的命令
+    // OLED_I2C_Stop();            // I2C终止
+    IIC1_WriteCommand(Command, 0x78);
 }
 
 /**
@@ -154,17 +155,18 @@ void OLED_WriteCommand(uint8_t Command)
  */
 void OLED_WriteData(uint8_t *Data, uint8_t Count)
 {
-    uint8_t i;
+    // uint8_t i;
 
-    OLED_I2C_Start();        // I2C起始
-    OLED_I2C_SendByte(0x78); // 发送OLED的I2C从机地址
-    OLED_I2C_SendByte(0x40); // 控制字节，给0x40，表示即将写数据
-    /*循环Count次，进行连续的数据写入*/
-    for (i = 0; i < Count; i++)
-    {
-        OLED_I2C_SendByte(Data[i]); // 依次发送Data的每一个数据
-    }
-    OLED_I2C_Stop(); // I2C终止
+    // OLED_I2C_Start();        // I2C起始
+    // OLED_I2C_SendByte(0x78); // 发送OLED的I2C从机地址
+    // OLED_I2C_SendByte(0x40); // 控制字节，给0x40，表示即将写数据
+    // /*循环Count次，进行连续的数据写入*/
+    // for (i = 0; i < Count; i++)
+    // {
+    //     OLED_I2C_SendByte(Data[i]); // 依次发送Data的每一个数据
+    // }
+    // OLED_I2C_Stop(); // I2C终止
+    IIC1_OLED_WriteData(Data, Count);
 }
 
 /*********************通信协议*/
@@ -179,7 +181,7 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count)
  */
 void OLED_Init(void)
 {
-    OLED_GPIO_Init(); // 先调用底层的端口初始化
+    // taskENTER_CRITICAL();
 
     /*写入一系列的命令，对OLED进行初始化配置*/
     OLED_WriteCommand(0xAE); // 设置显示开启/关闭，0xAE关闭，0xAF开启
@@ -219,6 +221,8 @@ void OLED_Init(void)
     OLED_WriteCommand(0x14);
 
     OLED_WriteCommand(0xAF); // 开启显示
+
+    // taskEXIT_CRITICAL();
 
     OLED_Clear();  // 清空显存数组
     OLED_Update(); // 更新显示，清屏，防止初始化后未显示内容时花屏

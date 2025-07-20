@@ -14,6 +14,7 @@
         "compare": "c",
         "stdio.h": "c",
         "timers.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "flash.h": "c"
     }
 }

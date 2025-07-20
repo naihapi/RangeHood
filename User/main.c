@@ -12,26 +12,11 @@
 int main(void)
 {
 
-    RCC_DeInit();
-    RCC_HSEConfig(RCC_HSE_ON);
-    while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET)
-        ;
-
-    // 配置PLL：假设HSE=8MHz，PLL倍频为9 -> 8 * 9=72MHz
-    RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_9);
-    RCC_PLLCmd(ENABLE);
-    while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET)
-        ;
-
-    // 设置系统时钟源为PLL
-    RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
-    while (RCC_GetSYSCLKSource() != 0x08)
-        ; // 等待PLL作为系统时钟
-
     /*---外设---*/
     GPIO_InitPro();
     TIM_InitPro();
     FLash_InitPro();
+    IIC_InitPro();
 
     /*---外件---*/
     //...

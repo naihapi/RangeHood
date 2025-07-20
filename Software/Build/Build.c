@@ -574,6 +574,12 @@ void Build_ControlPro(void)
         // 当前页：主页
         Build_HomeControl();
     }
+
+    if (Build_NowPage == 99)
+    {
+        // 当前页：锁屏页
+        // Build_LockControl();
+    }
 }
 
 /**

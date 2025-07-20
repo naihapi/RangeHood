@@ -19,7 +19,7 @@ typedef struct
 } WS2812_t;
 
 // 宏定义
-#define WS2812_NUMBER 12
+#define WS2812_NUMBER 24
 
 // API
 void WS2812_SendByte(uint8_t Byte);
