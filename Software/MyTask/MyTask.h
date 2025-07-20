@@ -15,6 +15,7 @@
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "task.h"
+#include "timers.h"
 
 // 硬件
 #include "OLED.h"

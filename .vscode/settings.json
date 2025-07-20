@@ -12,6 +12,8 @@
         "mymenu.h": "c",
         "ws2812.h": "c",
         "compare": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "timers.h": "c",
+        "task.h": "c"
     }
 }

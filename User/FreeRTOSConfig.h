@@ -25,7 +25,7 @@
 #define configUSE_PREEMPTION 1                        // 使用抢占式调度器
 #define configUSE_IDLE_HOOK 0                         // 不使用空闲任务钩子函数
 #define configUSE_TICK_HOOK 0                         // 不使用滴答定时器钩子函数
-#define configCPU_CLOCK_HZ ((unsigned long)72000000)  // CPU时钟频率设置为72MHz
+#define configCPU_CLOCK_HZ ((unsigned long)36000000)  // CPU时钟频率设置为72MHz
 #define configTICK_RATE_HZ ((TickType_t)1000)         // 滴答定时器频率设置为1000Hz（即1ms进行切换调度，但是是否成功还取决于其它条件）
 #define configMAX_PRIORITIES (5)                      // 设置任务的最大优先级数量
 #define configMAX_TASK_NAME_LEN (16)                  // 设置任务名的最大长度
@@ -33,6 +33,11 @@
 #define configUSE_16_BIT_TICKS 0                      // 不使用16位滴答计数器
 #define configIDLE_SHOULD_YIELD 1                     // 空闲任务应该让出CPU时间
 #define INCLUDE_uxTaskGetStackHighWaterMark 1         // 启用任务栈空间查询功能
+
+#define configUSE_TIMERS 1 // 启用定时器
+#define configTIMER_TASK_PRIORITY (configMAX_PRIORITIES - 1)
+#define configTIMER_TASK_STACK_DEPTH 50
+#define configTIMER_QUEUE_LENGTH 10
 
 /*将以下定义设置为1以包含API函数，或设置为0以排除API函数。*/
 #define INCLUDE_vTaskPrioritySet 1      // 包含设置任务优先级的函数

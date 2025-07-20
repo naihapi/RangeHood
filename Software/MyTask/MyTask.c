@@ -1,5 +1,7 @@
 #include "MyTASK.h"
 
+TimerHandle_t TIMER1_Handler;
+TimerHandle_t TIMER2_Handler;
 TaskHandle_t TASK1_Handler;
 TaskHandle_t TASK2_Handler;
 TaskHandle_t TASK3_Handler;
@@ -17,10 +19,25 @@ TaskHandle_t TASK14_Handler;
 TaskHandle_t TASK15_Handler;
 TaskHandle_t TASK_START_Handler;
 
+uint32_t ms = 0;
+void TIMER1(TimerHandle_t xTimer)
+{
+    // 获取当前嘀嗒计数
+    TickType_t xTickCount = xTaskGetTickCount();
+
+    // 转换为毫秒
+    ms = xTickCount * portTICK_PERIOD_MS;
+}
+
+void TIMER2(TimerHandle_t xTimer)
+{
+    TickType_t xTickCount = xTaskGetTickCount();
+}
+
 /**
  * @brief 任务1
  *
- * @note 例程测试程序
+ * @note KEY1检测
  */
 void TASK1(void *pvParameters)
 {
@@ -214,6 +231,15 @@ void TASK15(void *pvParameters)
     }
 }
 
+void Timer_Init(void)
+{
+    TIMER1_Handler = xTimerCreate((char *)"TIMER1", pdMS_TO_TICKS(5 * 1000), pdTRUE, (void *)0, TIMER1);
+    TIMER2_Handler = xTimerCreate("TIMER2", pdMS_TO_TICKS(10 * 1000), pdTRUE, (void *)1, TIMER2);
+
+    xTimerStart(TIMER1_Handler, 0);
+    xTimerStart(TIMER2_Handler, 0);
+}
+
 /**
  * @brief 打开任务
  *
@@ -226,6 +252,7 @@ void TASK15(void *pvParameters)
 void Task_Start(void *pvParameters)
 {
     taskENTER_CRITICAL(); // 进入临界区(中断关闭)
+    Timer_Init();
 
     xTaskCreate((TaskFunction_t)TASK1,
                 (char *)"TASK1",
