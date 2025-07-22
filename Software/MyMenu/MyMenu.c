@@ -8,6 +8,9 @@ uint8_t Name_Light_Auto[] = "Auto";           // 灯光自动模式
 uint8_t Name_Light_Red[] = "Red";             // 红色灯光
 uint8_t Name_Light_Green[] = "Green";         // 绿色灯光
 uint8_t Name_Light_Blue[] = "Blue";           // 蓝色灯光
+uint8_t Name_Lock_State[] = "State";          // 锁屏状态
+uint8_t Name_Lock_Change[] = "Change";        // 锁屏切换
+uint8_t Name_Lock_Style[] = "Style";          // 锁屏风格
 uint8_t Name_OLEDMode[] = "Display";          // 系统-OLED显示模式
 uint8_t Name_OLEDBrightness[] = "Brightness"; // 系统-OLED亮度
 uint8_t Name_OLEDDirection_LR[] = "Dir-LR";   // 系统-OLED左右方向
@@ -19,12 +22,16 @@ uint8_t Name_FreeHeap[] = "OSFreeHeap";       // 系统-剩余堆空间
 uint8_t State_Fan = 1;              // 风扇开关状态（0：关闭，1：开启）
 uint8_t State_Light = 1;            // 灯开关状态（0：关闭，1：开启）
 uint8_t State_Light_Auto = 1;       // 灯自动模式（0：手动模式，1：自动模式）
+uint8_t State_Lock = 1;             // 锁屏状态（0：关闭，1：打开）
 uint8_t State_OLEDMode = 0;         // 系统-OLED显示模式（0：深色系，1：浅色系）
 uint8_t State_OLEDDirection_LR = 1; // 系统-OLED显示左右方向（0：正常，1：左右反置）
 uint8_t State_OLEDDirection_TB = 1; // 系统-OLED显示上下方向（0：正常，1：上下反置）
 /*---状态(开关组件)---*/
 
-/*---数值(视图组件|滑块组件)---*/
+/*---数值(视图组件/滑块组件)---*/
+int Value_Lock_NowStyle = 1;         // 息屏当前样式
+int Value_Lock_MiniStyle = 0;        // 锁屏最小个数
+int Value_Lock_MaxStyle = 4;         // 锁屏最大个数
 int Value_Fan_NowSpeed = 5;          // 风扇当前速度
 int Value_Fan_MaxSpeed = 5;          // 风扇最大速度
 int Value_Fan_MiniSpeed = 1;         // 风扇最小速度
@@ -41,19 +48,22 @@ int Value_OLED_NowBrightness = 2;    // 系统-OLED当前亮度
 int Value_OLED_MaxBrightness = 3;    // 系统-OLED可调节的最大亮度
 int Value_OLED_MiniBrightness = 1;   // 系统-OLED可调节的最小亮度
 int Value_FreeHeap = 0;              // 系统-剩余堆空间
-/*---数值(视图组件|滑块组件)---*/
+/*---数值(视图组件/滑块组件)---*/
 
 /*---单位(滑块组件)---*/
-uint8_t Unit_Fan_Speed[] = "Gears";            // 风扇风速档位
-uint8_t Unit_Light_RGBxColor[] = "Proportion"; // RGB颜色占比
-uint8_t Unit_OLED_BrightnessGear[] = "Gears";  // 系统-OLED亮度档位
+uint8_t Unit_Lock_Style[] = "Single";          // 锁定样式-个
+uint8_t Unit_Fan_Speed[] = "Gears";            // 风扇风速-档位
+uint8_t Unit_Light_RGBxColor[] = "Proportion"; // RGB颜色-占比
+uint8_t Unit_OLED_BrightnessGear[] = "Gears";  // 系统-OLED亮度-档位
 /*---单位(滑块组件)---*/
 
 /*---描述(视图组件)---*/
-uint8_t Description_FreeHeap[] = "Byte"; // 系统-剩余堆字节
+uint8_t Description_LockStyle[] = "Styles"; // 描述当前锁定样式(MySystem中修改此字符串)
+uint8_t Description_FreeHeap[] = "Byte";    // 系统-剩余堆字节
 /*---描述(视图组件)---*/
 
 /*---主页项标题---*/
+uint8_t Menu_Title_Lock[] = {"Lock"};     // 锁屏
 uint8_t Menu_Title_System[] = {"System"}; // 系统
 uint8_t Menu_Title_Fan[] = {"Fan"};       // 风扇
 uint8_t Menu_Title_Light[] = {"Light"};   // 灯光
@@ -64,6 +74,7 @@ int8_t Menu_MaxItem_Home = 0;   // 主页项
 int8_t Menu_MaxItem_System = 0; // 系统菜单项
 int8_t Menu_MaxItem_Fan = 0;    // 风扇菜单项
 int8_t Menu_MaxItem_Light = 0;  // 灯光菜单项
+int8_t Menu_MaxItem_Lock = 0;   // 锁屏菜单项
 /*---最大项---*/
 
 /*---主页项---*/
@@ -71,6 +82,7 @@ MenuHome *Menu_Head_Home;   // 主页头
 MenuItem *Menu_Head_System; // 系统页
 MenuItem *Menu_Head_Fan;    // 风扇页
 MenuItem *Menu_Head_Light;  // 灯光页
+MenuItem *Menu_Head_Lock;   // 锁屏页
 /*---主页项---*/
 
 /**
@@ -91,11 +103,13 @@ void MyMenu_Create_HomeItem(void)
     MenuHome *system = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_System, Menu_Title_System, Menu_Head_System, &Menu_MaxItem_System);
     MenuHome *fan = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Fan, Menu_Title_Fan, Menu_Head_Fan, &Menu_MaxItem_Fan);
     MenuHome *light = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Light, Menu_Title_Light, Menu_Head_Light, &Menu_MaxItem_Light);
+    MenuHome *lock = Menu_CreateHomeItem(OLEDData_Icon_HomeItem_Lock, Menu_Title_Lock, Menu_Head_Lock, &Menu_MaxItem_Lock);
 
     // 菜单头包含
     Menu_Include_HomeItem(Menu_Head_Home, system);
     Menu_Include_HomeItem(Menu_Head_Home, fan);
     Menu_Include_HomeItem(Menu_Head_Home, light);
+    Menu_Include_HomeItem(Menu_Head_Home, lock);
 }
 
 /**
@@ -180,6 +194,31 @@ void MyMenu_Create_MenuItem_Light(void)
 }
 
 /**
+ * @brief 创建“锁屏”菜单项
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 无
+ */
+void MyMenu_Create_MenuItem_Lock(void)
+{
+    // 创建菜单头
+    Menu_Head_Lock = Menu_CreateMenuHead(Menu_Title_Lock);
+
+    // 创建项
+    MenuItem *state = Menu_CreateSwitchItem(OLEDData_Icon_Image, Name_Lock_State, &State_Lock);
+    MenuItem *change = Menu_CreateSliderItem(OLEDData_Icon_Image, Name_Lock_Change, &Value_Lock_NowStyle, &Value_Lock_MaxStyle, &Value_Lock_MiniStyle, Unit_Lock_Style, SliderModule_NotSetting);
+    MenuItem *description = Menu_CreateViewItem(OLEDData_Icon_Image, Name_Lock_Style, Description_LockStyle, &Value_Lock_NowStyle);
+
+    // 菜单项包含
+    Menu_Include_MenuItem(Menu_Head_Lock, state);
+    Menu_Include_MenuItem(Menu_Head_Lock, change);
+    Menu_Include_MenuItem(Menu_Head_Lock, description);
+}
+
+/**
  * @brief 创建菜单汇总
  *
  * @param 无
@@ -194,6 +233,7 @@ void MyMenu_Create_MenuItem(void)
     MyMenu_Create_MenuItem_System();
     MyMenu_Create_MenuItem_Fan();
     MyMenu_Create_MenuItem_Light();
+    MyMenu_Create_MenuItem_Lock();
 
     // 创建主页项
     MyMenu_Create_HomeItem();
@@ -214,6 +254,7 @@ void MyMenu_Calculate_MaxItem(void)
     Menu_MaxItem_System = Menu_GetMenuMaxItem(Menu_Head_System);
     Menu_MaxItem_Fan = Menu_GetMenuMaxItem(Menu_Head_Fan);
     Menu_MaxItem_Light = Menu_GetMenuMaxItem(Menu_Head_Light);
+    Menu_MaxItem_Lock = Menu_GetMenuMaxItem(Menu_Head_Lock);
 
     // 计算主页项
     Menu_MaxItem_Home = Menu_GetHomeMaxItem(Menu_Head_Home);

@@ -25,6 +25,8 @@ extern int Value_Light_Green_NowColor;
 extern int Value_Light_Blue_NowColor;
 extern uint8_t State_Light;
 extern uint8_t State_Light_Auto;
+extern uint8_t State_Lock;
+extern int Value_Lock_NowStyle;
 
 // API
 void MyMenu_InitPro(void);

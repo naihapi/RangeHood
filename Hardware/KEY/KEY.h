@@ -14,7 +14,7 @@
 #include "MyTASK.h"
 
 // 变量
-//...
+extern uint8_t KEY_Count;
 
 // 宏定义
 #define KEY1_TASK TASK1_Handler // 按键1任务

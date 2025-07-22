@@ -153,10 +153,10 @@ void UI_Display_ViewModule(uint8_t *Title, uint8_t *Description, int *Value)
     OLED_DrawRectangle(2, 2, 125, 61, OLED_UNFILLED); // 绘制窗口边框
     OLED_ShowString(15, 0, (char *)Title, OLED_6X8);  // 标题
 
-    OLED_ShowString(10, 17, (char *)"description:", OLED_6X8); // 提示符
-    OLED_ShowString(10, 38, (char *)"value:", OLED_6X8);       // 提示符
+    OLED_ShowString(10, 17, (char *)"more:", OLED_6X8);  // 提示符
+    OLED_ShowString(10, 38, (char *)"value:", OLED_6X8); // 提示符
 
-    OLED_ShowString(83, 17, (char *)Description, OLED_6X8); // 描述
+    OLED_ShowString(40, 17, (char *)Description, OLED_6X8); // 描述
     OLED_ShowSignedNum(55, 32, *Value, 5, OLED_8X16);       // 数值
 }
 
@@ -391,6 +391,50 @@ void UI_Display_TipsFail(void)
 
     OLED_ShowImage(45, 3, 40, 40, OLEDData_Icon_RequestFail); // 图标
     OLED_ShowString(43, 50, "Failed!", OLED_6X8);             // 提示符
+}
+
+/**
+ * @brief 锁屏界面选择
+ *
+ * @param Stylex 样式选择(UI_LOCKSTYLE_xxx)
+ *
+ * @retval 无
+ *
+ * @note 1奶茶 2锁 3Github 4小恐龙 5空白
+ */
+void UI_Display_Select_LockStyle(uint8_t Stylex)
+{
+    // 清空屏幕
+    OLED_Clear();
+
+    switch (Stylex)
+    {
+    case UI_LOCKSTYLE_MILKTEA:
+    {
+        OLED_ShowImage(48, 15, 32, 32, OLEDData_Img_MilkTea);
+    }
+    break;
+    case UI_LOCKSTYLE_LOCK:
+    {
+        OLED_ShowImage(48, 15, 32, 32, OLEDData_Img_Lock);
+    }
+    break;
+    case UI_LOCKSTYLE_GITHUB:
+    {
+        OLED_ShowImage(48, 15, 32, 32, OLEDData_Img_Github);
+    }
+    break;
+    case UI_LOCKSTYLE_GOOGLE:
+    {
+        OLED_ShowImage(48, 15, 32, 32, OLEDData_Img_GoogleDinosaur);
+    }
+    break;
+    case UI_LOCKSTYLE_NONE:
+    {
+        OLED_Clear();
+    }
+    break;
+    }
 }
 
 /**

@@ -4,6 +4,7 @@
 uint8_t KEY1_State = 0; // 按键1状态记录
 uint8_t KEY2_State = 0; // 按键2状态记录
 uint8_t KEY3_State = 0; // 按键3状态记录
+uint8_t KEY_Count = 0;  // 按键计数(按下就计数)
 
 // 经测试，在STM32F103C8T6上，KEY_CNT_longDown的自增并不是任务调度的1ms/次。大约20倍误差：计数10次时，实际时间流过200ms左右
 // 通过串口输出时间比对、Keil5的Debug查看变量数值发现的规律
@@ -128,6 +129,7 @@ void KEY1_Scanf(void)
         vTaskDelay(5);
         if (GPIO_RetState_KEY1() == 0)
         {
+            KEY_Count++;
             while (GPIO_RetState_KEY1() == 0)
             {
                 KEY_CNT_longDown++;
@@ -172,6 +174,7 @@ void KEY2_Scanf(void)
         vTaskDelay(5);
         if (GPIO_RetState_KEY2() == 0)
         {
+            KEY_Count++;
             while (GPIO_RetState_KEY2() == 0)
             {
                 KEY_CNT_longDown++;
@@ -216,6 +219,7 @@ void KEY3_Scanf(void)
         vTaskDelay(5);
         if (GPIO_RetState_KEY3() == 0)
         {
+            KEY_Count++;
             while (GPIO_RetState_KEY3() == 0)
             {
                 KEY_CNT_longDown++;

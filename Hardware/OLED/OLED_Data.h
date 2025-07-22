@@ -43,6 +43,12 @@ extern const uint8_t OLEDData_Icon_RequestFail[];
 extern const uint8_t OLEDData_Icon_Speed[];
 extern const uint8_t OLEDData_Icon_Cruise[];
 extern const uint8_t OLEDData_Icon_FreeHeap[];
+extern const uint8_t OLEDData_Img_MilkTea[];
+extern const uint8_t OLEDData_Img_Lock[];
+extern const uint8_t OLEDData_Img_Github[];
+extern const uint8_t OLEDData_Img_GoogleDinosaur[];
+extern const uint8_t OLEDData_Icon_HomeItem_Lock[];
+extern const uint8_t OLEDData_Icon_Image[];
 /*按照上面的格式，在这个位置加入新的图像数据声明*/
 //...
 

@@ -83,8 +83,7 @@ void TASK5(void *pvParameters)
     while (1)
     {
         MySystem_Fanlight_Function();
-
-        vTaskDelay(500);
+        vTaskDelay(50);
     }
 }
 
@@ -127,6 +126,8 @@ void TASK8(void *pvParameters)
 {
     while (1)
     {
+        vTaskDelay(1000);
+        MySystem_Lock_Function();
     }
 }
 
@@ -139,6 +140,7 @@ void TASK9(void *pvParameters)
 {
     while (1)
     {
+        vTaskDelay(1);
     }
 }
 
@@ -151,6 +153,7 @@ void TASK10(void *pvParameters)
 {
     while (1)
     {
+        vTaskDelay(1);
     }
 }
 
@@ -283,19 +286,19 @@ void Task_Start(void *pvParameters)
                 (UBaseType_t)TASK8_PRIORITY,
                 (TaskHandle_t *)&TASK8_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK9,
-                (char *)"TASK9",
-                (configSTACK_DEPTH_TYPE)TASK9_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK9_PRIORITY,
-                (TaskHandle_t *)&TASK9_Handler);
+    // xTaskCreate((TaskFunction_t)TASK9,
+    //             (char *)"TASK9",
+    //             (configSTACK_DEPTH_TYPE)TASK9_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK9_PRIORITY,
+    //             (TaskHandle_t *)&TASK9_Handler);
 
-    xTaskCreate((TaskFunction_t)TASK10,
-                (char *)"TASK10",
-                (configSTACK_DEPTH_TYPE)TASK10_STACK_SIZE,
-                (void *)NULL,
-                (UBaseType_t)TASK10_PRIORITY,
-                (TaskHandle_t *)&TASK10_Handler);
+    // xTaskCreate((TaskFunction_t)TASK10,
+    //             (char *)"TASK10",
+    //             (configSTACK_DEPTH_TYPE)TASK10_STACK_SIZE,
+    //             (void *)NULL,
+    //             (UBaseType_t)TASK10_PRIORITY,
+    //             (TaskHandle_t *)&TASK10_Handler);
 
     // xTaskCreate((TaskFunction_t)TASK11,
     //             (char *)"TASK11",

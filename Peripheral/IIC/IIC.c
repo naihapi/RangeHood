@@ -14,7 +14,7 @@ void IIC_InitPro(void)
     // 配置IIC
     I2C_InitTypeDef I2C_InitStructure;                                        // IIC初始化结构体
     I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;                                // IIC默认模式
-    I2C_InitStructure.I2C_ClockSpeed = 300000;                                // 速率40kHz
+    I2C_InitStructure.I2C_ClockSpeed = 500000;                                // 速率40kHz
     I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;                        // 占空比2(仅大于100kHz生效)
     I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;                               // 使能应答
     I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; // 7位地址
@@ -36,7 +36,7 @@ void IIC_InitPro(void)
  */
 uint8_t IIC1_WaitEvent(I2C_TypeDef *I2Cx, uint32_t I2C_EVENT)
 {
-    uint32_t Timeout = 20000;
+    uint32_t Timeout = 5000;
 
     while (I2C_CheckEvent(I2Cx, I2C_EVENT) != SUCCESS)
     {
@@ -87,10 +87,7 @@ void IIC1_OLED_WriteCommand(uint8_t Command)
 {
     // I2C起始
     I2C_GenerateSTART(I2C1, ENABLE);
-    if (!IIC1_WaitEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT))
-    {
-        return;
-    }
+    IIC1_WaitEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT);
 
     // 发送OLED的I2C从机地址
     I2C_Send7bitAddress(I2C1, IIC_OLED_ADDR, I2C_Direction_Transmitter);

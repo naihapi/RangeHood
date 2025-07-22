@@ -17,9 +17,16 @@
 #include "FreeRTOSConfig.h"
 #include "task.h"
 
-//变量
+// 变量
 typedef struct MenuItem MenuItem;
 typedef struct MenuHome MenuHome;
+
+// 宏定义
+#define UI_LOCKSTYLE_NONE 0
+#define UI_LOCKSTYLE_MILKTEA 1
+#define UI_LOCKSTYLE_LOCK 2
+#define UI_LOCKSTYLE_GITHUB 3
+#define UI_LOCKSTYLE_GOOGLE 4
 
 // API
 void UI_InitPro(void);
@@ -38,5 +45,6 @@ void UI_Display_ManualControl(uint8_t left, uint8_t right, uint8_t front, uint8_
 void UI_Display_ExitTips(void);
 void UI_Display_TipsInto(void);
 void UI_Display_TipsFail(void);
+void UI_Display_Select_LockStyle(uint8_t Stylex);
 
 #endif

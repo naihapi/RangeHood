@@ -5,6 +5,9 @@ uint8_t MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_INCRE
 uint8_t MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_INCREASE; // MYSYSTEM_WS2812_GC_xxx
 uint8_t MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_INCREASE;  // MYSYSTEM_WS2812_GC_xxx
 uint8_t MySystem_Fanlight_InitFlag = 0;                                                // 风扇灯光初始化标志位(0:未初始化 1:已初始化)
+uint8_t MySystem_Fanlight_LoadFlag = 0;                                                // 风扇灯光重载标志位(0:未重载 1:已重载)
+uint8_t MySystem_Locked_Flag = 0;                                                      // 锁屏标志位(0:未锁屏 1:已锁屏)
+uint8_t MySystem_Locked_LastKEYCount = 0;                                              // 上一个按键计数记录
 
 void MySystem_InitPro(void)
 {
@@ -149,8 +152,26 @@ void MySystem_GetFreeHeap(void)
     Value_FreeHeap = xPortGetFreeHeapSize();
 }
 
-void MySystem_Fanlight_Timer_Function(void)
+/**
+ * @brief 屏幕超时息屏
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 当无用户操作时，屏幕进入超时息屏
+ */
+void MySystem_Lock_Function(void)
 {
+    if (State_Lock && KEY_Count == MySystem_Locked_LastKEYCount)
+    {
+        Build_SetValue(&Build_NowPage, BUILD_SV_NOWPAGE_LOCK);
+        MySystem_Locked_Flag = 1;
+    }
+    else
+    {
+        MySystem_Locked_LastKEYCount = KEY_Count;
+    }
 }
 
 /**
@@ -210,8 +231,8 @@ void MySystem_Fanlight_GradualChange_Same_Init(void)
 {
     for (uint8_t i = 0; i < MYSYSTEM_WS2812_NUMBER; i++)
     {
-        MySystem_WS2812_Buffer[i].Red = 150;
-        MySystem_WS2812_Buffer[i].Green = 50;
+        MySystem_WS2812_Buffer[i].Red = 50;
+        MySystem_WS2812_Buffer[i].Green = 150;
         MySystem_WS2812_Buffer[i].Blue = 250;
     }
 }
@@ -231,60 +252,66 @@ void MySystem_Fanlight_GradualChange_Same(void)
     uint8_t max = 250; // 最大值
     uint8_t mini = 5;  // 最小值
 
+    // Red阈值监测
+    if (MySystem_WS2812_Buffer[0].Red >= max)
+    {
+        MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_REDUCE;
+    }
+    if (MySystem_WS2812_Buffer[0].Red <= mini)
+    {
+        MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_INCREASE;
+    }
+
+    // Green阈值监测
+    if (MySystem_WS2812_Buffer[0].Green >= max)
+    {
+        MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_REDUCE;
+    }
+    if (MySystem_WS2812_Buffer[0].Green <= mini)
+    {
+        MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_INCREASE;
+    }
+
+    // Blue阈值监测
+    if (MySystem_WS2812_Buffer[0].Blue >= max) // 限幅和调换
+    {
+        MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_REDUCE;
+    }
+    if (MySystem_WS2812_Buffer[0].Blue <= mini) // 限幅和调换
+    {
+        MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_INCREASE;
+    }
+
     for (uint8_t j = 0; j < MYSYSTEM_WS2812_NUMBER; j++)
     {
         // Red渐变
         if (MySystem_Fanlight_GradualChange_Same_Red_Flag == MYSYSTEM_WS2812_GC_INCREASE)
         {
-            MySystem_WS2812_Buffer[j].Red += step;    // 数值增加
-            if (MySystem_WS2812_Buffer[j].Red >= max) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_REDUCE;
-            }
+            MySystem_WS2812_Buffer[j].Red += step; // 数值增加
         }
         if (MySystem_Fanlight_GradualChange_Same_Red_Flag == MYSYSTEM_WS2812_GC_REDUCE)
         {
-            MySystem_WS2812_Buffer[j].Red -= step;     // 数值减少
-            if (MySystem_WS2812_Buffer[j].Red <= mini) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Red_Flag = MYSYSTEM_WS2812_GC_INCREASE;
-            }
+            MySystem_WS2812_Buffer[j].Red -= step; // 数值减少
         }
 
         // Green渐变
         if (MySystem_Fanlight_GradualChange_Same_Green_Flag == MYSYSTEM_WS2812_GC_INCREASE)
         {
-            MySystem_WS2812_Buffer[j].Green += step;    // 数值增加
-            if (MySystem_WS2812_Buffer[j].Green >= max) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_REDUCE;
-            }
+            MySystem_WS2812_Buffer[j].Green += step; // 数值增加
         }
         if (MySystem_Fanlight_GradualChange_Same_Green_Flag == MYSYSTEM_WS2812_GC_REDUCE)
         {
-            MySystem_WS2812_Buffer[j].Green -= step;     // 数值减少
-            if (MySystem_WS2812_Buffer[j].Green <= mini) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Green_Flag = MYSYSTEM_WS2812_GC_INCREASE;
-            }
+            MySystem_WS2812_Buffer[j].Green -= step; // 数值减少
         }
 
         // Blue渐变
         if (MySystem_Fanlight_GradualChange_Same_Blue_Flag == MYSYSTEM_WS2812_GC_INCREASE)
         {
-            MySystem_WS2812_Buffer[j].Blue += step;    // 数值增加
-            if (MySystem_WS2812_Buffer[j].Blue >= max) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_REDUCE;
-            }
+            MySystem_WS2812_Buffer[j].Blue += step; // 数值增加
         }
         if (MySystem_Fanlight_GradualChange_Same_Blue_Flag == MYSYSTEM_WS2812_GC_REDUCE)
         {
-            MySystem_WS2812_Buffer[j].Blue -= step;     // 数值减少
-            if (MySystem_WS2812_Buffer[j].Blue <= mini) // 限幅和调换
-            {
-                MySystem_Fanlight_GradualChange_Same_Blue_Flag = MYSYSTEM_WS2812_GC_INCREASE;
-            }
+            MySystem_WS2812_Buffer[j].Blue -= step; // 数值减少
         }
     }
 }
@@ -342,6 +369,12 @@ void MySystem_Fanlight_Function_Init(void)
  */
 void MySystem_Fanlight_Function(void)
 {
+
+    // if (MySystem_Fanlight_LoadFlag)
+    // {
+    //     MySystem_Fanlight_SetColor(0, 0, 0); // 关闭灯光
+    //     MySystem_Fanlight_LoadFlag = 0;
+    // }
 
     if (State_Light)
     {

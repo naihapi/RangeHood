@@ -168,37 +168,22 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Flash_Buffer,0x0A</ItemText>
+          <ItemText>clocks,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Flash_InitFlag,0x0A</ItemText>
+          <ItemText>i,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>State_OLEDMode</ItemText>
+          <ItemText>KEY_Count</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Value_OLED_NowBrightness</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>buffertest,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>ms,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>status,0x0A</ItemText>
+          <ItemText>MySystem_Locked_LastKEYCount</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

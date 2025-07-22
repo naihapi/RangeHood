@@ -1,7 +1,8 @@
 #include "Build.h"
 
-uint8_t Build_CNT_HomeItem = 1;   // 主页项计数器
-uint8_t Build_CNT_MenuItem = 1;   // 菜单项计数器
+uint8_t Build_CNT_HomeItem = 1; // 主页项计数器
+uint8_t Build_CNT_MenuItem = 1; // 菜单项计数器
+// uint8_t Build_CNT_LockStyle = UI_LOCKSTYLE_MILKTEA; // 默认息屏样式
 uint8_t Build_CNT_SliderItem = 1; // 滑块组件选择器(1：调整当前值，2：调整最大值，3：调整最小值)
 uint8_t Build_NowPage = 1;        // 当前所处页(1：主页，2：菜单页，3：组件页，4：自定义页)
 MenuHome *Build_NowHomeItem;      // 当前所处主页项
@@ -115,7 +116,6 @@ void Build_MenuControl_KEYevent(void)
     /*~~~~~~~~~~~~有用事件~~~~~~~~~~~~*/
     if (KEY_RetState(KEY_NUMBER_1) == KEY_STATE_DOWNSHORT) // KEY1短按事件
     {
-        // 切换页面，需重写。。。
         Build_SetValue(&Build_NowPage, BUILD_SV_NOWPAGE_MODULE);
 
         KEY_ClearState(KEY_NUMBER_1);
@@ -489,6 +489,41 @@ void Build_ModuleControl_SelectDisplay(void)
 }
 
 /**
+ * @brief 锁屏按键控制
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note 无
+ */
+void Build_Lock_KEYevent(void)
+{
+    if (KEY_RetState(KEY_NUMBER_1) == KEY_STATE_DOWNSHORT ||
+        KEY_RetState(KEY_NUMBER_2) == KEY_STATE_DOWNSHORT ||
+        KEY_RetState(KEY_NUMBER_3) == KEY_STATE_DOWNSHORT) // KEY123短按事件-退出锁屏模式
+    {
+        /*~~~~~~~~~~~~有用事件~~~~~~~~~~~~*/
+
+        Build_SetValue(&Build_NowPage, BUILD_SV_NOWPAGE_HOME); // 返回主页
+        Build_SetValue(&Build_CNT_MenuItem, 1);                // 菜单项计数初始化
+
+        KEY_ClearState(KEY_NUMBER_1);
+        KEY_ClearState(KEY_NUMBER_2);
+        KEY_ClearState(KEY_NUMBER_3);
+        /*~~~~~~~~~~~~有用事件~~~~~~~~~~~~*/
+    }
+    else
+    {
+        /*~~~~~~~~~~~~无用事件~~~~~~~~~~~~*/
+        KEY_ClearState(KEY_NUMBER_1);
+        KEY_ClearState(KEY_NUMBER_2);
+        KEY_ClearState(KEY_NUMBER_3);
+        /*~~~~~~~~~~~~无用事件~~~~~~~~~~~~*/
+    }
+}
+
+/**
  * @brief 主页控制
  *
  * @param 无
@@ -547,6 +582,25 @@ void Build_ModuleControl(void)
 }
 
 /**
+ * @brief 息屏控制
+ *
+ * @param 无
+ *
+ * @retval 无
+ *
+ * @note MySystem.c提供进入此页面的方式
+ * @note 长按KEY3退出息屏显示
+ */
+void Build_LockControl(void)
+{
+    // 锁屏按键控制
+    Build_Lock_KEYevent();
+
+    // 锁屏渲染
+    UI_Display_Select_LockStyle((uint8_t)Value_Lock_NowStyle);
+}
+
+/**
  * @brief 页面构建汇总
  *
  * @param 无
@@ -575,10 +629,10 @@ void Build_ControlPro(void)
         Build_HomeControl();
     }
 
-    if (Build_NowPage == 99)
+    if (Build_NowPage == BUILD_SV_NOWPAGE_LOCK)
     {
-        // 当前页：锁屏页
-        // Build_LockControl();
+        // 当前页：息屏页
+        Build_LockControl();
     }
 }
 

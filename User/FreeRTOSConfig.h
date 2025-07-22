@@ -20,19 +20,22 @@
 // #define configSUPPORT_STATIC_ALLOCATION 1 // 打开静态分配内存（注释掉表示不使用）
 #define configSUPPORT_DYNAMIC_ALLOCATION 1 // 打开动态分配内存
 
-#define configTOTAL_HEAP_SIZE ((size_t)(4 * 1024))    // 设置总堆大小
+#define configTOTAL_HEAP_SIZE ((size_t)(5 * 1024))    // 设置总堆大小
 #define configMINIMAL_STACK_SIZE ((unsigned short)64) // 设置任务的最小堆栈大小
-#define configUSE_PREEMPTION 1                        // 使用抢占式调度器
-#define configUSE_IDLE_HOOK 0                         // 不使用空闲任务钩子函数
-#define configUSE_TICK_HOOK 0                         // 不使用滴答定时器钩子函数
-#define configCPU_CLOCK_HZ ((unsigned long)36000000)  // CPU时钟频率设置为72MHz
-#define configTICK_RATE_HZ ((TickType_t)1000)         // 滴答定时器频率设置为1000Hz（即1ms进行切换调度，但是是否成功还取决于其它条件）
-#define configMAX_PRIORITIES (5)                      // 设置任务的最大优先级数量
-#define configMAX_TASK_NAME_LEN (16)                  // 设置任务名的最大长度
-#define configUSE_TRACE_FACILITY 0                    // 不使用跟踪功能
-#define configUSE_16_BIT_TICKS 0                      // 不使用16位滴答计数器
-#define configIDLE_SHOULD_YIELD 1                     // 空闲任务应该让出CPU时间
-#define INCLUDE_uxTaskGetStackHighWaterMark 1         // 启用任务栈空间查询功能
+
+#define configCPU_CLOCK_HZ 72000000 // CPU时钟频率设置为72MHz
+// #define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ // 默认使用CPU主频
+#define configTICK_RATE_HZ ((TickType_t)1000) // 滴答定时器频率设置为1000Hz
+
+#define configUSE_PREEMPTION 1                // 使用抢占式调度器
+#define configUSE_IDLE_HOOK 0                 // 不使用空闲任务钩子函数
+#define configUSE_TICK_HOOK 0                 // 不使用滴答定时器钩子函数
+#define configMAX_PRIORITIES (5)              // 设置任务的最大优先级数量
+#define configMAX_TASK_NAME_LEN (16)          // 设置任务名的最大长度
+#define configUSE_TRACE_FACILITY 0            // 不使用跟踪功能
+#define configUSE_16_BIT_TICKS 0              // 不使用16位滴答计数器
+#define configIDLE_SHOULD_YIELD 1             // 空闲任务应该让出CPU时间
+#define INCLUDE_uxTaskGetStackHighWaterMark 1 // 启用任务栈空间查询功能
 
 #define configUSE_TIMERS 1 // 启用定时器
 #define configTIMER_TASK_PRIORITY (configMAX_PRIORITIES - 1)
