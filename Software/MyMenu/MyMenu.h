@@ -27,6 +27,7 @@ extern uint8_t State_Light;
 extern uint8_t State_Light_Auto;
 extern uint8_t State_Lock;
 extern int Value_Lock_NowStyle;
+extern uint8_t Description_LockStyle[20];
 
 // API
 void MyMenu_InitPro(void);

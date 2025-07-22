@@ -83,11 +83,6 @@ void Task_Start(void *pvParameters);
 #define TASK8_PRIORITY 1
 #define TASK9_PRIORITY 1
 #define TASK10_PRIORITY 1
-#define TASK11_PRIORITY 1
-#define TASK12_PRIORITY 1
-#define TASK13_PRIORITY 1
-#define TASK14_PRIORITY 1
-#define TASK15_PRIORITY 1
 #define TASK_START_PRIORITY 1
 
 // RTOS任务句柄
@@ -101,11 +96,6 @@ extern TaskHandle_t TASK7_Handler;
 extern TaskHandle_t TASK8_Handler;
 extern TaskHandle_t TASK9_Handler;
 extern TaskHandle_t TASK10_Handler;
-extern TaskHandle_t TASK11_Handler;
-extern TaskHandle_t TASK12_Handler;
-extern TaskHandle_t TASK13_Handler;
-extern TaskHandle_t TASK14_Handler;
-extern TaskHandle_t TASK15_Handler;
 extern TaskHandle_t TASK_START_Handler;
 
 // API

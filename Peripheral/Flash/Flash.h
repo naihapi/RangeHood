@@ -8,7 +8,7 @@
 #include "MyMenu.h"
 
 // 宏定义
-#define FLASH_ADDR_ENDPAGE 0x08007C00 // 最后1页的地址
+#define FLASH_ADDR_ENDPAGE 0x08007D00 // 最后1页的地址
 #define FLASH_LENGTH 128              // 1k位置分16bit
 
 // 变量

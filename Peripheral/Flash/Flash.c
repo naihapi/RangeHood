@@ -116,6 +116,8 @@ void Flash_RecoverData(void)
     Value_Light_Blue_NowColor = Flash_Buffer[9];
     State_Light = Flash_Buffer[10];
     State_Light_Auto = Flash_Buffer[11];
+    State_Lock = Flash_Buffer[12];
+    Value_Lock_NowStyle = Flash_Buffer[13];
 }
 
 /**
@@ -168,6 +170,8 @@ void Flash_SavaData(void)
     Flash_Buffer[9] = Value_Light_Blue_NowColor;
     Flash_Buffer[10] = State_Light;
     Flash_Buffer[11] = State_Light_Auto;
+    Flash_Buffer[12] = State_Lock;
+    Flash_Buffer[13] = Value_Lock_NowStyle;
 
     // 保存数据到Flash
     Flash_WriteBuffer(FLASH_ADDR_ENDPAGE, Flash_Buffer, FLASH_LENGTH);

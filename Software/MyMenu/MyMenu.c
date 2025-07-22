@@ -10,7 +10,6 @@ uint8_t Name_Light_Green[] = "Green";         // 绿色灯光
 uint8_t Name_Light_Blue[] = "Blue";           // 蓝色灯光
 uint8_t Name_Lock_State[] = "State";          // 锁屏状态
 uint8_t Name_Lock_Change[] = "Change";        // 锁屏切换
-uint8_t Name_Lock_Style[] = "Style";          // 锁屏风格
 uint8_t Name_OLEDMode[] = "Display";          // 系统-OLED显示模式
 uint8_t Name_OLEDBrightness[] = "Brightness"; // 系统-OLED亮度
 uint8_t Name_OLEDDirection_LR[] = "Dir-LR";   // 系统-OLED左右方向
@@ -58,8 +57,7 @@ uint8_t Unit_OLED_BrightnessGear[] = "Gears";  // 系统-OLED亮度-档位
 /*---单位(滑块组件)---*/
 
 /*---描述(视图组件)---*/
-uint8_t Description_LockStyle[] = "Styles"; // 描述当前锁定样式(MySystem中修改此字符串)
-uint8_t Description_FreeHeap[] = "Byte";    // 系统-剩余堆字节
+uint8_t Description_FreeHeap[] = "Byte"; // 系统-剩余堆字节
 /*---描述(视图组件)---*/
 
 /*---主页项标题---*/
@@ -208,14 +206,12 @@ void MyMenu_Create_MenuItem_Lock(void)
     Menu_Head_Lock = Menu_CreateMenuHead(Menu_Title_Lock);
 
     // 创建项
-    MenuItem *state = Menu_CreateSwitchItem(OLEDData_Icon_Image, Name_Lock_State, &State_Lock);
+    MenuItem *state = Menu_CreateSwitchItem(OLEDData_Icon_Clock, Name_Lock_State, &State_Lock);
     MenuItem *change = Menu_CreateSliderItem(OLEDData_Icon_Image, Name_Lock_Change, &Value_Lock_NowStyle, &Value_Lock_MaxStyle, &Value_Lock_MiniStyle, Unit_Lock_Style, SliderModule_NotSetting);
-    MenuItem *description = Menu_CreateViewItem(OLEDData_Icon_Image, Name_Lock_Style, Description_LockStyle, &Value_Lock_NowStyle);
 
     // 菜单项包含
     Menu_Include_MenuItem(Menu_Head_Lock, state);
     Menu_Include_MenuItem(Menu_Head_Lock, change);
-    Menu_Include_MenuItem(Menu_Head_Lock, description);
 }
 
 /**

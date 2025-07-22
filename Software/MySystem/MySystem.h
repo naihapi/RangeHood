@@ -33,5 +33,6 @@ void MySystem_FanSpeed_Function(void);
 void MySystem_Fanlight_Function_Init(void);
 void MySystem_Fanlight_Function(void);
 void MySystem_Lock_Function(void);
+void MySystem_StringUpdate_Function(void);
 
 #endif

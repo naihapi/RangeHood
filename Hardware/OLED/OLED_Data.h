@@ -49,6 +49,7 @@ extern const uint8_t OLEDData_Img_Github[];
 extern const uint8_t OLEDData_Img_GoogleDinosaur[];
 extern const uint8_t OLEDData_Icon_HomeItem_Lock[];
 extern const uint8_t OLEDData_Icon_Image[];
+extern const uint8_t OLEDData_Icon_Clock[];
 /*按照上面的格式，在这个位置加入新的图像数据声明*/
 //...
 
